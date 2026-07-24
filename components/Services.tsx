@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Globe, Smartphone, Link } from "lucide-react";
+import { Globe, Smartphone } from "lucide-react";
 
 const services = [
   {
@@ -18,14 +18,6 @@ const services = [
     features: ["React Native", "Cross-Platform", "iOS & Android", "Push Notifications"],
     color: "#8b5cf6",
     gradient: "linear-gradient(135deg, #7c3aed, #8b5cf6)",
-  },
-  {
-    icon: <Link size={26} />,
-    title: "API Integration",
-    desc: "Seamlessly integrating third-party services, payment gateways, and custom APIs to power your applications.",
-    features: ["REST & GraphQL", "Payment Gateways", "Auth Systems", "Third-party APIs"],
-    color: "#06b6d4",
-    gradient: "linear-gradient(135deg, #0891b2, #06b6d4)",
   },
 ];
 
