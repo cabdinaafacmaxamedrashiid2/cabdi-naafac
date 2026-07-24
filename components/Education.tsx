@@ -5,7 +5,7 @@ import { GraduationCap } from "lucide-react";
 const education = [
   {
     degree: "Bachelor of Science in Computer Science",
-    institution: "Somali National University",
+    institution: "Jazera University",
     location: "Mogadishu, Somalia",
     period: "2021 – 2025",
     desc: "Focused on software engineering, algorithms, data structures, and modern application development. Graduated with honors while leading multiple innovative tech projects.",
