@@ -69,18 +69,14 @@ export default function Contact() {
     e.preventDefault();
     setSending(true);
     try {
-      const res = await fetch("https://formspree.io/f/xeokkqjb", {
+      const form = e.target as HTMLFormElement;
+      const data = new FormData(form);
+      const res = await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          _replyto: formData.email,
-        }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
       });
-      if (res.ok) {
+      if (res.ok || res.status === 200) {
         setSent(true);
         setFormData({ name: "", email: "", subject: "", message: "" });
         setTimeout(() => setSent(false), 5000);
@@ -371,7 +367,14 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit}>
+              <form
+                onSubmit={handleSubmit}
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+              >
+                <input type="hidden" name="form-name" value="contact" />
                 <div
                   style={{
                     display: "grid",
@@ -391,6 +394,7 @@ export default function Contact() {
                     <input
                       id="name"
                       type="text"
+                      name="name"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -416,6 +420,7 @@ export default function Contact() {
                     <input
                       id="email"
                       type="email"
+                      name="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -443,6 +448,7 @@ export default function Contact() {
                   <input
                     id="subject"
                     type="text"
+                    name="subject"
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -468,6 +474,7 @@ export default function Contact() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     required
                     rows={5}
                     value={formData.message}
