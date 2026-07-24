@@ -71,18 +71,24 @@ export default function Contact() {
     try {
       const form = e.target as HTMLFormElement;
       const data = new FormData(form);
+      const urlEncodedData = new URLSearchParams(data as any).toString();
+      
       const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+        body: urlEncodedData,
       });
+      
       if (res.ok || res.status === 200) {
         setSent(true);
         setFormData({ name: "", email: "", subject: "", message: "" });
         setTimeout(() => setSent(false), 5000);
+      } else {
+        alert("Failed to send message. Please try again.");
       }
-    } catch {
-      // silently fail
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while sending the message.");
     } finally {
       setSending(false);
     }
