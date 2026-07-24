@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { ExternalLink } from "lucide-react";
 
 const GithubIcon = ({ size = 20 }: { size?: number }) => (
   <svg
@@ -20,62 +19,28 @@ const GithubIcon = ({ size = 20 }: { size?: number }) => (
 
 const projects = [
   {
-    title: "Library Management System",
-    desc: "A comprehensive digital library management platform with book cataloging, member management, borrowing/returning system, and automated overdue notifications. Built with modern web technologies for efficiency.",
-    tech: ["React.js", "Node.js", "MongoDB", "Express", "JWT"],
-    icon: "📚",
-    color: "#3b82f6",
-    gradient: "linear-gradient(135deg, #1e3a5f, #2563eb20)",
+    title: "Project One",
+    image: "/project1.jpg",
     github: "https://github.com",
     demo: "#",
-    category: "Web App",
   },
   {
-    title: "Smart Livestock Vaccination System",
-    desc: "An intelligent agricultural system for tracking and managing livestock vaccination schedules in Somalia. Features GPS tracking, vaccination records, health monitoring, and automated reminders for farmers.",
-    tech: ["React Native", "Node.js", "PostgreSQL", "GPS API", "Push Notifications"],
-    icon: "🐄",
-    color: "#22c55e",
-    gradient: "linear-gradient(135deg, #14532d, #16a34a20)",
+    title: "Project Two",
+    image: "/project2.jpg",
     github: "https://github.com",
     demo: "#",
-    category: "Mobile App",
   },
   {
-    title: "Face Recognition Attendance",
-    desc: "An AI-powered attendance management system using facial recognition technology. Automatically marks attendance, prevents proxy attendance, and generates detailed analytics reports.",
-    tech: ["Python", "OpenCV", "React", "Node.js", "TensorFlow", "MongoDB"],
-    icon: "👁️",
-    color: "#8b5cf6",
-    gradient: "linear-gradient(135deg, #3b1f6e, #7c3aed20)",
+    title: "Project Three",
+    image: "/project3.jpg",
     github: "https://github.com",
     demo: "#",
-    category: "AI Project",
-  },
-  {
-    title: "Coffee Shop Application",
-    desc: "A premium mobile application for ordering specialty coffee and beverages. Features real-time order tracking, custom menu builders, digital wallet payments, and loyalty points tracking.",
-    tech: ["React Native", "Node.js", "Express", "MongoDB", "Redux Toolkit"],
-    icon: "☕",
-    color: "#d97706",
-    gradient: "linear-gradient(135deg, #78350f, #d9770620)",
-    github: "https://github.com",
-    demo: "#",
-    category: "Mobile App",
   },
 ];
 
 export default function Projects() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeFilter, setActiveFilter] = useState("All");
   const ref = useRef<HTMLDivElement>(null);
-
-  const filters = ["All", "Web App", "Mobile App", "AI Project"];
-
-  const filtered =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeFilter);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -95,233 +60,171 @@ export default function Projects() {
         padding: "100px 0",
         background: "linear-gradient(180deg, #020817, #0a1628)",
         position: "relative",
-        overflow: "hidden",
       }}
     >
       <div
-        className="glow-orb"
-        style={{
-          width: 600,
-          height: 600,
-          background: "rgba(59,130,246,0.06)",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      />
-
-      <div
         ref={ref}
-        style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem", position: "relative", zIndex: 1 }}
+        style={{ maxWidth: "1140px", margin: "0 auto", padding: "0 1.5rem" }}
       >
-        <p
-          style={{
-            textAlign: "center",
-            color: "#3b82f6",
-            fontWeight: 600,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            fontSize: "0.85rem",
-            marginBottom: "0.75rem",
-          }}
-        >
-          My Work
-        </p>
-        <h2 className="section-title">
-          Featured <span className="gradient-text">Projects</span>
-        </h2>
-        <p className="section-subtitle">
-          Real-world applications built with passion and precision
-        </p>
-
-        {/* Filter Buttons */}
+        {/* Title */}
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "0.75rem",
-            marginBottom: "3rem",
-            flexWrap: "wrap",
+            textAlign: "center",
+            marginBottom: "4rem",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(30px)",
+            transition: "all 0.6s ease",
           }}
         >
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              style={{
-                padding: "8px 20px",
-                borderRadius: "50px",
-                border: `1px solid ${activeFilter === filter ? "#3b82f6" : "rgba(59,130,246,0.2)"}`,
-                background:
-                  activeFilter === filter
-                    ? "linear-gradient(135deg, #1d4ed8, #3b82f6)"
-                    : "rgba(59,130,246,0.05)",
-                color: activeFilter === filter ? "white" : "#94a3b8",
-                fontSize: "0.85rem",
-                fontWeight: 600,
-                cursor: "pointer",
-                transition: "all 0.3s",
-                fontFamily: "Poppins, sans-serif",
-              }}
-            >
-              {filter}
-            </button>
-          ))}
+          <p
+            style={{
+              color: "#64748b",
+              fontWeight: 500,
+              fontSize: "0.95rem",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Browse My Recent
+          </p>
+          <h2
+            style={{
+              fontSize: "3rem",
+              fontWeight: 800,
+              color: "#f8fafc",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Projects
+          </h2>
         </div>
 
+        {/* Projects Grid */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: "2rem",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(40px)",
+            transition: "all 0.8s ease 0.2s",
           }}
           className="projects-grid"
         >
-          {filtered.map((project, i) => (
+          {projects.map((project, i) => (
             <div
               key={project.title}
               className="glass-card"
               style={{
-                borderRadius: "20px",
+                borderRadius: "24px",
                 overflow: "hidden",
-                transition: "all 0.4s ease",
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(40px)",
-                transitionDelay: `${i * 0.12}s`,
+                border: "1px solid rgba(59, 130, 246, 0.15)",
+                textAlign: "center",
+                transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-8px)";
-                (e.currentTarget as HTMLElement).style.boxShadow = `0 25px 60px ${project.color}25`;
-                (e.currentTarget as HTMLElement).style.borderColor = `${project.color}40`;
+                e.currentTarget.style.transform = "translateY(-8px)";
+                e.currentTarget.style.boxShadow = "0 20px 40px rgba(0,0,0,0.3)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(59,130,246,0.15)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
-              {/* Project Header */}
+              {/* Project Image */}
               <div
                 style={{
-                  background: project.gradient,
-                  padding: "2rem",
-                  borderBottom: `1px solid ${project.color}25`,
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
+                  width: "100%",
+                  height: "250px",
+                  overflow: "hidden",
+                  borderRadius: "16px",
+                  margin: "0",
+                  padding: "1rem",
                 }}
               >
-                <div>
-                  <div style={{ fontSize: "3rem", marginBottom: "0.75rem" }}>
-                    {project.icon}
-                  </div>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      background: `${project.color}25`,
-                      border: `1px solid ${project.color}40`,
-                      color: project.color,
-                      fontSize: "0.75rem",
-                      fontWeight: 600,
-                      padding: "4px 12px",
-                      borderRadius: "50px",
-                    }}
-                  >
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Action buttons */}
-                <div style={{ display: "flex", gap: "10px" }}>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: 40,
-                      height: 40,
-                      borderRadius: "10px",
-                      background: "rgba(255,255,255,0.1)",
-                      border: "1px solid rgba(255,255,255,0.15)",
-                      color: "#e2e8f0",
-                      textDecoration: "none",
-                      transition: "all 0.3s",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.2)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.1)";
-                    }}
-                  >
-                    <GithubIcon size={18} />
-                  </a>
-                  <a
-                    href={project.demo}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: 40,
-                      height: 40,
-                      borderRadius: "10px",
-                      background: `${project.color}30`,
-                      border: `1px solid ${project.color}50`,
-                      color: project.color,
-                      textDecoration: "none",
-                      transition: "all 0.3s",
-                    }}
-                  >
-                    <ExternalLink size={18} />
-                  </a>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                    background: "rgba(59, 130, 246, 0.05)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "4rem",
+                  }}
+                >
+                  {i === 0 && "📚"}
+                  {i === 1 && "🐄"}
+                  {i === 2 && "👁️"}
                 </div>
               </div>
 
-              {/* Project Body */}
-              <div style={{ padding: "1.75rem" }}>
-                <h3
-                  style={{
-                    fontSize: "1.15rem",
-                    fontWeight: 700,
-                    color: "#e2e8f0",
-                    marginBottom: "0.75rem",
-                  }}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  style={{
-                    color: "#94a3b8",
-                    fontSize: "0.88rem",
-                    lineHeight: 1.7,
-                    marginBottom: "1.5rem",
-                  }}
-                >
-                  {project.desc}
-                </p>
+              {/* Project Title */}
+              <h3
+                style={{
+                  color: "#f8fafc",
+                  fontSize: "1.3rem",
+                  fontWeight: 700,
+                  padding: "1rem 1rem 0.75rem",
+                }}
+              >
+                {project.title}
+              </h3>
 
-                {/* Tech Stack */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      style={{
-                        background: `${project.color}12`,
-                        border: `1px solid ${project.color}25`,
-                        color: project.color,
-                        fontSize: "0.75rem",
-                        fontWeight: 600,
-                        padding: "4px 10px",
-                        borderRadius: "6px",
-                      }}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+              {/* Buttons */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "1rem",
+                  padding: "0.75rem 1rem 1.5rem",
+                }}
+              >
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    padding: "10px 22px",
+                    borderRadius: "30px",
+                    border: "2px solid rgba(59, 130, 246, 0.3)",
+                    color: "#f8fafc",
+                    fontWeight: 600,
+                    fontSize: "0.9rem",
+                    textDecoration: "none",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(59, 130, 246, 0.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                  }}
+                >
+                  GitHub
+                </a>
+                <a
+                  href={project.demo}
+                  style={{
+                    padding: "10px 22px",
+                    borderRadius: "30px",
+                    border: "2px solid rgba(59, 130, 246, 0.3)",
+                    color: "#f8fafc",
+                    fontWeight: 600,
+                    fontSize: "0.9rem",
+                    textDecoration: "none",
+                    transition: "all 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(59, 130, 246, 0.1)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "transparent";
+                  }}
+                >
+                  Live Demo
+                </a>
               </div>
             </div>
           ))}
