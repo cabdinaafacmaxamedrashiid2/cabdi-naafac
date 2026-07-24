@@ -68,27 +68,43 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    // Simulate sending
-    await new Promise((r) => setTimeout(r, 2000));
-    setSending(false);
-    setSent(true);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setTimeout(() => setSent(false), 5000);
+    try {
+      const res = await fetch("https://formspree.io/f/xeokkqjb", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          _replyto: formData.email,
+        }),
+      });
+      if (res.ok) {
+        setSent(true);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setSent(false), 5000);
+      }
+    } catch {
+      // silently fail
+    } finally {
+      setSending(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: <Mail size={20} />,
       label: "Email",
-      value: "cabdinafaac@gmail.com",
-      href: "mailto:cabdinafaac@gmail.com",
+      value: "cabdinaafacmaxamedrashiid237@gmail.com",
+      href: "mailto:cabdinaafacmaxamedrashiid237@gmail.com",
       color: "#ef4444",
     },
     {
       icon: <Phone size={20} />,
       label: "Phone",
-      value: "+252 615 000 000",
-      href: "tel:+252615000000",
+      value: "+252 619 051 885",
+      href: "tel:+252619051885",
       color: "#22c55e",
     },
     {
