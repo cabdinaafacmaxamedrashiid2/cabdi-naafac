@@ -397,45 +397,6 @@ export default function Hero() {
               />
             </div>
 
-            {/* Floating Badges */}
-            <div
-              style={{
-                position: "absolute",
-                top: "10%",
-                right: "-5%",
-                background: "rgba(10,22,40,0.9)",
-                border: "1px solid rgba(59,130,246,0.3)",
-                borderRadius: "12px",
-                padding: "8px 12px",
-                fontSize: "0.75rem",
-                color: "#60a5fa",
-                fontWeight: 600,
-                backdropFilter: "blur(10px)",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-                whiteSpace: "nowrap",
-              }}
-            >
-              ⚡ Full Stack Dev
-            </div>
-            <div
-              style={{
-                position: "absolute",
-                bottom: "15%",
-                left: "-10%",
-                background: "rgba(10,22,40,0.9)",
-                border: "1px solid rgba(6,182,212,0.3)",
-                borderRadius: "12px",
-                padding: "8px 12px",
-                fontSize: "0.75rem",
-                color: "#06b6d4",
-                fontWeight: 600,
-                backdropFilter: "blur(10px)",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-                whiteSpace: "nowrap",
-              }}
-            >
-              🇸🇴 Somalia
-            </div>
           </div>
         </div>
       </div>

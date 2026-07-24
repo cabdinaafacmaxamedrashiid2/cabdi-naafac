@@ -5,7 +5,6 @@ import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
-import Certificates from "@/components/Certificates";
 import TechStack from "@/components/TechStack";
 import Stats from "@/components/Stats";
 import Testimonials from "@/components/Testimonials";
@@ -23,7 +22,6 @@ export default function Home() {
       <Projects />
       <Experience />
       <Education />
-      <Certificates />
       <TechStack />
       <Testimonials />
       <FAQ />
