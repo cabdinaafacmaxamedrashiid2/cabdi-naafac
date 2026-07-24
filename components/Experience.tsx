@@ -1,36 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Briefcase } from "lucide-react";
-
-const experiences = [
-  {
-    role: "Full Stack Developer",
-    company: "Freelance / Remote",
-    period: "2024 – Present",
-    desc: "Developing end-to-end web and mobile applications for clients across East Africa. Specializing in React, Node.js, and MongoDB stack with a focus on performance and user experience.",
-    skills: ["React.js", "Node.js", "MongoDB", "React Native"],
-    type: "full-time",
-    color: "#3b82f6",
-  },
-  {
-    role: "Junior Web Developer",
-    company: "Tech Startup – Mogadishu",
-    period: "2023 – 2024",
-    desc: "Contributed to building a local e-commerce platform serving Somali businesses. Worked on frontend development with React and integrated payment systems.",
-    skills: ["React.js", "CSS3", "REST APIs", "Firebase"],
-    type: "part-time",
-    color: "#06b6d4",
-  },
-  {
-    role: "Web Development Intern",
-    company: "IT Company – Somalia",
-    period: "2022 – 2023",
-    desc: "Gained hands-on experience in building responsive web applications, collaborating with senior developers, and learning modern development workflows.",
-    skills: ["HTML5", "CSS3", "JavaScript", "Git"],
-    type: "internship",
-    color: "#8b5cf6",
-  },
-];
+import { BadgeCheck } from "lucide-react";
 
 export default function Experience() {
   const [isVisible, setIsVisible] = useState(false);
@@ -47,6 +17,22 @@ export default function Experience() {
     return () => observer.disconnect();
   }, []);
 
+  const frontendSkills = [
+    { name: "HTML", level: "Experienced" },
+    { name: "CSS", level: "Experienced" },
+    { name: "SASS", level: "Intermediate" },
+    { name: "JavaScript", level: "Intermediate" },
+    { name: "TypeScript", level: "Basic" },
+    { name: "Material UI", level: "Intermediate" },
+  ];
+
+  const backendSkills = [
+    { name: "PostgreSQL", level: "Basic" },
+    { name: "Node JS", level: "Intermediate" },
+    { name: "Express JS", level: "Intermediate" },
+    { name: "Git", level: "Intermediate" },
+  ];
+
   return (
     <section
       id="experience"
@@ -54,179 +40,142 @@ export default function Experience() {
         padding: "100px 0",
         background: "linear-gradient(180deg, #0a1628, #020817)",
         position: "relative",
-        overflow: "hidden",
       }}
     >
       <div
-        className="glow-orb"
-        style={{
-          width: 400,
-          height: 400,
-          background: "rgba(59,130,246,0.07)",
-          top: "20%",
-          left: "-100px",
-        }}
-      />
-
-      <div
         ref={ref}
-        style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}
+        style={{ maxWidth: "1140px", margin: "0 auto", padding: "0 1.5rem" }}
       >
-        <p
+        <div
           style={{
             textAlign: "center",
-            color: "#3b82f6",
-            fontWeight: 600,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            fontSize: "0.85rem",
-            marginBottom: "0.75rem",
+            marginBottom: "4rem",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(30px)",
+            transition: "all 0.6s ease",
           }}
         >
-          My Journey
-        </p>
-        <h2 className="section-title">
-          Work <span className="gradient-text">Experience</span>
-        </h2>
-        <p className="section-subtitle">
-          Professional milestones that shaped my expertise
-        </p>
-
-        {/* Timeline */}
-        <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative" }}>
-          {/* Timeline Line */}
-          <div
+          <p
             style={{
-              position: "absolute",
-              left: "28px",
-              top: 0,
-              bottom: 0,
-              width: "2px",
-              background: "linear-gradient(180deg, transparent, #3b82f6, #06b6d4, transparent)",
+              color: "#64748b",
+              fontWeight: 500,
+              fontSize: "0.95rem",
+              marginBottom: "0.5rem",
             }}
-          />
+          >
+            Explore My
+          </p>
+          <h2
+            style={{
+              fontSize: "3rem",
+              fontWeight: 800,
+              color: "#f8fafc",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Experience
+          </h2>
+        </div>
 
-          {experiences.map((exp, i) => (
-            <div
-              key={i}
+        <div
+          style={{
+            display: "grid",
+            gap: "2rem",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(40px)",
+            transition: "all 0.8s ease 0.2s",
+          }}
+          className="experience-cards-row"
+        >
+          {/* Frontend Card */}
+          <div
+            className="glass-card"
+            style={{
+              padding: "2.5rem 2rem",
+              borderRadius: "32px",
+              border: "1px solid rgba(59, 130, 246, 0.2)",
+              textAlign: "center",
+            }}
+          >
+            <h3
               style={{
-                display: "flex",
-                gap: "2rem",
-                marginBottom: "2.5rem",
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateX(0)" : "translateX(-40px)",
-                transition: `all 0.6s ease ${i * 0.15}s`,
-                position: "relative",
+                color: "#e2e8f0",
+                fontSize: "1.4rem",
+                fontWeight: 700,
+                marginBottom: "2rem",
               }}
             >
-              {/* Timeline dot */}
-              <div
-                style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: "50%",
-                  background: `${exp.color}20`,
-                  border: `2px solid ${exp.color}`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                  position: "relative",
-                  zIndex: 1,
-                  boxShadow: `0 0 20px ${exp.color}30`,
-                }}
-              >
-                <Briefcase size={22} color={exp.color} />
-              </div>
-
-              {/* Card */}
-              <div
-                className="glass-card"
-                style={{
-                  flex: 1,
-                  padding: "1.75rem",
-                  borderRadius: "16px",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateX(8px)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = `0 15px 40px ${exp.color}20`;
-                  (e.currentTarget as HTMLElement).style.borderColor = `${exp.color}40`;
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateX(0)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(59,130,246,0.15)";
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    flexWrap: "wrap",
-                    gap: "0.5rem",
-                    marginBottom: "0.75rem",
-                  }}
-                >
+              Frontend Development
+            </h3>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "2rem 1rem",
+                textAlign: "left",
+              }}
+              className="experience-skills-grid"
+            >
+              {frontendSkills.map((skill, index) => (
+                <div key={index} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <BadgeCheck size={22} color="#f8fafc" style={{ marginTop: "2px", flexShrink: 0 }} />
                   <div>
-                    <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#e2e8f0" }}>
-                      {exp.role}
-                    </h3>
-                    <div style={{ color: exp.color, fontWeight: 600, fontSize: "0.9rem" }}>
-                      {exp.company}
+                    <div style={{ color: "#f8fafc", fontWeight: 700, fontSize: "1rem", marginBottom: "4px" }}>
+                      {skill.name}
+                    </div>
+                    <div style={{ color: "#64748b", fontSize: "0.85rem", fontWeight: 500 }}>
+                      {skill.level}
                     </div>
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
-                  >
-                    <span
-                      style={{
-                        background: `${exp.color}15`,
-                        border: `1px solid ${exp.color}30`,
-                        color: exp.color,
-                        fontSize: "0.78rem",
-                        fontWeight: 600,
-                        padding: "4px 12px",
-                        borderRadius: "50px",
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      {exp.type}
-                    </span>
-                    <span style={{ color: "#64748b", fontSize: "0.85rem" }}>{exp.period}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Backend Card */}
+          <div
+            className="glass-card"
+            style={{
+              padding: "2.5rem 2rem",
+              borderRadius: "32px",
+              border: "1px solid rgba(59, 130, 246, 0.2)",
+              textAlign: "center",
+            }}
+          >
+            <h3
+              style={{
+                color: "#e2e8f0",
+                fontSize: "1.4rem",
+                fontWeight: 700,
+                marginBottom: "2rem",
+              }}
+            >
+              Backend Development
+            </h3>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "2rem 1rem",
+                textAlign: "left",
+              }}
+              className="experience-skills-grid"
+            >
+              {backendSkills.map((skill, index) => (
+                <div key={index} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <BadgeCheck size={22} color="#f8fafc" style={{ marginTop: "2px", flexShrink: 0 }} />
+                  <div>
+                    <div style={{ color: "#f8fafc", fontWeight: 700, fontSize: "1rem", marginBottom: "4px" }}>
+                      {skill.name}
+                    </div>
+                    <div style={{ color: "#64748b", fontSize: "0.85rem", fontWeight: 500 }}>
+                      {skill.level}
+                    </div>
                   </div>
                 </div>
-
-                <p style={{ color: "#94a3b8", fontSize: "0.9rem", lineHeight: 1.7, marginBottom: "1rem" }}>
-                  {exp.desc}
-                </p>
-
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                  {exp.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      style={{
-                        background: "rgba(59,130,246,0.1)",
-                        border: "1px solid rgba(59,130,246,0.2)",
-                        color: "#60a5fa",
-                        fontSize: "0.78rem",
-                        fontWeight: 600,
-                        padding: "3px 10px",
-                        borderRadius: "6px",
-                      }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
