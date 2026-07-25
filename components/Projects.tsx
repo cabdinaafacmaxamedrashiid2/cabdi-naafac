@@ -26,7 +26,7 @@ const projects = [
   },
   {
     title: "Smart Livestock App",
-    image: "https://images.unsplash.com/photo-1582293041079-7814c2f12063?w=800&q=80",
+    image: "https://images.pexels.com/photos/7178822/pexels-photo-7178822.jpeg?auto=compress&cs=tinysrgb&w=800",
     github: "https://github.com",
     demo: "#",
   },
