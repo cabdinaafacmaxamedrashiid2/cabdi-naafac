@@ -20,19 +20,19 @@ const GithubIcon = ({ size = 20 }: { size?: number }) => (
 const projects = [
   {
     title: "Library Management System",
-    image: "/project1.jpg",
+    image: "https://images.unsplash.com/photo-1568667256549-094345857637?w=800&q=80",
     github: "https://github.com",
     demo: "#",
   },
   {
     title: "Smart Livestock App",
-    image: "/project2.jpg",
+    image: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800&q=80",
     github: "https://github.com",
     demo: "#",
   },
   {
     title: "Face Recognition",
-    image: "/project3.jpg",
+    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
     github: "https://github.com",
     demo: "#",
   },
