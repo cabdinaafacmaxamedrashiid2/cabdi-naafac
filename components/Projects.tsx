@@ -19,19 +19,19 @@ const GithubIcon = ({ size = 20 }: { size?: number }) => (
 
 const projects = [
   {
-    title: "Project One",
+    title: "Library Management System",
     image: "/project1.jpg",
     github: "https://github.com",
     demo: "#",
   },
   {
-    title: "Project Two",
+    title: "Smart Livestock App",
     image: "/project2.jpg",
     github: "https://github.com",
     demo: "#",
   },
   {
-    title: "Project Three",
+    title: "Face Recognition",
     image: "/project3.jpg",
     github: "https://github.com",
     demo: "#",
@@ -141,23 +141,17 @@ export default function Projects() {
                   padding: "1rem",
                 }}
               >
-                <div
+                <img
+                  src={project.image}
+                  alt={project.title}
                   style={{
                     width: "100%",
                     height: "100%",
-                    borderRadius: "16px",
-                    overflow: "hidden",
-                    background: "rgba(59, 130, 246, 0.05)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "4rem",
+                    objectFit: "cover",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255,255,255,0.1)",
                   }}
-                >
-                  {i === 0 && "📚"}
-                  {i === 1 && "🐄"}
-                  {i === 2 && "👁️"}
-                </div>
+                />
               </div>
 
               {/* Project Title */}
