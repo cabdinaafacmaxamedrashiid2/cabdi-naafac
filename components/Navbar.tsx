@@ -126,21 +126,25 @@ export default function Navbar() {
               style={{
                 color: activeSection === link.href.replace("#", "") ? "#60a5fa" : "#94a3b8",
                 textDecoration: "none",
-                fontSize: "0.875rem",
-                fontWeight: 500,
+                fontSize: "0.85rem",
+                fontWeight: activeSection === link.href.replace("#", "") ? 600 : 500,
                 padding: "6px 14px",
-                borderRadius: "8px",
-                transition: "all 0.2s",
-                background: activeSection === link.href.replace("#", "") ? "rgba(59,130,246,0.12)" : "transparent",
+                borderRadius: "20px",
+                transition: "all 0.3s ease",
+                background: activeSection === link.href.replace("#", "") ? "rgba(59,130,246,0.18)" : "transparent",
+                border: activeSection === link.href.replace("#", "") ? "1px solid rgba(59,130,246,0.35)" : "1px solid transparent",
+                boxShadow: activeSection === link.href.replace("#", "") ? "0 0 15px rgba(59,130,246,0.2)" : "none",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.color = "#60a5fa";
-                (e.currentTarget as HTMLElement).style.background = "rgba(59,130,246,0.1)";
+                (e.currentTarget as HTMLElement).style.background = "rgba(59,130,246,0.12)";
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(59,130,246,0.25)";
               }}
               onMouseLeave={(e) => {
                 if (activeSection !== link.href.replace("#", "")) {
                   (e.currentTarget as HTMLElement).style.color = "#94a3b8";
                   (e.currentTarget as HTMLElement).style.background = "transparent";
+                  (e.currentTarget as HTMLElement).style.borderColor = "transparent";
                 }
               }}
             >
