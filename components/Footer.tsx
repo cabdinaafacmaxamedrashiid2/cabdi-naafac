@@ -103,7 +103,7 @@ export default function Footer() {
             </h4>
             <div style={{ display: "flex", gap: "1rem" }}>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/cabdinaafac.maxamedrashiid"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

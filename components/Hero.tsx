@@ -176,7 +176,7 @@ export default function Hero() {
           {/* Social Icons */}
           <div style={{ display: "flex", gap: "1.2rem" }}>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/cabdinaafac.maxamedrashiid"
               target="_blank"
               rel="noopener noreferrer"
               style={{
