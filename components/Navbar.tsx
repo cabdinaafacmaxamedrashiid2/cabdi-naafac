@@ -5,7 +5,11 @@ import { Menu, X, ChevronDown } from "lucide-react";
 const mainLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -45,7 +49,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      const sections = ["home", "about", "projects", "experience", "education", "contact"];
+      const sections = ["home", "about", "skills", "services", "projects", "experience", "education", "contact"];
       for (const section of [...sections].reverse()) {
         const el = document.getElementById(section);
         if (el && window.scrollY >= el.offsetTop - 120) {
