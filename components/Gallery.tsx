@@ -5,31 +5,24 @@ import { Image as ImageIcon, X, Maximize2 } from "lucide-react";
 const initialPhotos = [
   {
     id: 1,
-    title: "Coding & Development",
-    category: "Work",
-    image: "/profile.jpg",
-    description: "Building modern full-stack web and mobile applications.",
+    title: "Personal Highlights",
+    category: "Moments",
+    image: "/gallery1.jpg",
+    description: "My personal highlights and coding journey.",
   },
   {
     id: 2,
-    title: "Smart Livestock Project",
-    category: "Projects",
-    image: "/camel.jpg",
-    description: "Developing digital livestock tracking and health management tools.",
+    title: "Learning & Accomplishments",
+    category: "Milestones",
+    image: "/gallery2.jpg",
+    description: "Sharing moments of learning, build events, and achievements.",
   },
   {
     id: 3,
-    title: "Library Management",
-    category: "Projects",
-    image: "/project1.jpg",
-    description: "Modern dashboard interface for library systems.",
-  },
-  {
-    id: 4,
-    title: "AI & Biometrics",
-    category: "Technology",
-    image: "/project3.jpg",
-    description: "Exploring face recognition and AI models.",
+    title: "Tech & Networking",
+    category: "Events",
+    image: "/gallery3.jpg",
+    description: "Connecting with developers and attending technical presentations.",
   },
 ];
 
