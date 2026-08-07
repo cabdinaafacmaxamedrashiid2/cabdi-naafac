@@ -15,6 +15,12 @@ const LinkedinIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
+const FacebookIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
@@ -96,6 +102,36 @@ export default function Footer() {
               Connect
             </h4>
             <div style={{ display: "flex", gap: "1rem" }}>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 42,
+                  height: 42,
+                  borderRadius: "12px",
+                  background: "rgba(24, 119, 242, 0.08)",
+                  border: "1px solid rgba(24, 119, 242, 0.2)",
+                  color: "#94a3b8",
+                  textDecoration: "none",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#1877f2";
+                  e.currentTarget.style.borderColor = "#1877f2";
+                  e.currentTarget.style.background = "rgba(24, 119, 242, 0.15)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "#94a3b8";
+                  e.currentTarget.style.borderColor = "rgba(24, 119, 242, 0.2)";
+                  e.currentTarget.style.background = "rgba(24, 119, 242, 0.08)";
+                }}
+              >
+                <FacebookIcon size={20} />
+              </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"

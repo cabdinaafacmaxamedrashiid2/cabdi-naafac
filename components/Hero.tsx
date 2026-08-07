@@ -16,6 +16,12 @@ const LinkedinIcon = ({ size = 28 }: { size?: number }) => (
   </svg>
 );
 
+const FacebookIcon = ({ size = 28 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -169,6 +175,19 @@ export default function Hero() {
 
           {/* Social Icons */}
           <div style={{ display: "flex", gap: "1.2rem" }}>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: "#f8fafc",
+                transition: "color 0.3s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#1877f2")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#f8fafc")}
+            >
+              <FacebookIcon size={28} />
+            </a>
             <a
               href="https://linkedin.com"
               target="_blank"
