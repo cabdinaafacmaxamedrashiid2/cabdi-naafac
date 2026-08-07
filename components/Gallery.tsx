@@ -21,14 +21,14 @@ const initialPhotos = [
     id: 3,
     title: "Library Management",
     category: "Projects",
-    image: "https://images.unsplash.com/photo-1568667256549-094345857637?w=800&q=80",
+    image: "/project1.jpg",
     description: "Modern dashboard interface for library systems.",
   },
   {
     id: 4,
     title: "AI & Biometrics",
     category: "Technology",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
+    image: "/project3.jpg",
     description: "Exploring face recognition and AI models.",
   },
 ];
