@@ -8,7 +8,6 @@ const mainLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
-  { label: "Gallery", href: "#gallery" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
@@ -29,7 +28,6 @@ const megaMenu = [
       { label: "Library App", href: "#projects", desc: "Management system" },
       { label: "Livestock App", href: "#projects", desc: "Smart farming" },
       { label: "Face Recognition", href: "#projects", desc: "AI & biometrics" },
-      { label: "Photo Gallery", href: "#gallery", desc: "My moments" },
     ],
   },
   {
@@ -51,7 +49,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      const sections = ["home", "about", "skills", "services", "projects", "gallery", "experience", "education", "contact"];
+      const sections = ["home", "about", "skills", "services", "projects", "experience", "education", "contact"];
       for (const section of [...sections].reverse()) {
         const el = document.getElementById(section);
         if (el && window.scrollY >= el.offsetTop - 120) {
