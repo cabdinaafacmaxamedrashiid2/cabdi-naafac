@@ -235,17 +235,30 @@ export default function Navbar() {
           <a
             href="#contact"
             style={{
-              padding: "8px 20px",
+              padding: "8px 24px",
               borderRadius: "30px",
-              background: "linear-gradient(135deg, #3b82f6, #06b6d4)",
-              color: "#fff",
-              fontWeight: 600,
+              border: "2px solid #00f7ff",
+              color: "#ffffff",
+              fontWeight: 700,
               fontSize: "0.85rem",
               textDecoration: "none",
-              transition: "opacity 0.2s",
+              textTransform: "uppercase",
+              letterSpacing: "1px",
+              transition: "all 0.4s ease",
+              boxShadow: "0 0 10px rgba(0, 247, 255, 0.2)",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "#00f7ff";
+              e.currentTarget.style.color = "#020817";
+              e.currentTarget.style.boxShadow = "0 0 20px rgba(0, 247, 255, 0.6), 0 0 40px rgba(0, 247, 255, 0.4)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "#ffffff";
+              e.currentTarget.style.boxShadow = "0 0 10px rgba(0, 247, 255, 0.2)";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
             className="hidden-mobile"
           >
             Hire Me
@@ -312,12 +325,17 @@ export default function Navbar() {
               display: "block",
               margin: "0.75rem 0.5rem 0",
               padding: "12px",
-              borderRadius: "10px",
-              background: "linear-gradient(135deg, #3b82f6, #06b6d4)",
-              color: "#fff",
-              fontWeight: 600,
+              borderRadius: "30px",
+              border: "2px solid #00f7ff",
+              background: "transparent",
+              color: "#ffffff",
+              fontWeight: 700,
               textAlign: "center",
               textDecoration: "none",
+              textTransform: "uppercase",
+              letterSpacing: "1.5px",
+              transition: "all 0.4s ease",
+              boxShadow: "0 0 15px rgba(0, 247, 255, 0.2)",
             }}
           >
             Hire Me
