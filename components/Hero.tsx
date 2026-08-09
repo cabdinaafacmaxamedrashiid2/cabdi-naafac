@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Download } from "lucide-react";
+import SocialLinks from "./SocialLinks";
 
 const GithubIcon = ({ size = 28 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -174,47 +175,7 @@ export default function Hero() {
           </div>
 
           {/* Social Icons */}
-          <div style={{ display: "flex", gap: "1.2rem" }}>
-            <a
-              href="https://www.facebook.com/cabdinaafac.maxamedrashiid"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "#f8fafc",
-                transition: "color 0.3s ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#1877f2")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#f8fafc")}
-            >
-              <FacebookIcon size={28} />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "#f8fafc",
-                transition: "color 0.3s ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#3b82f6")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#f8fafc")}
-            >
-              <LinkedinIcon size={28} />
-            </a>
-            <a
-              href="https://github.com/cabdinaafacmaxamedrashiid2"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "#f8fafc",
-                transition: "color 0.3s ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#3b82f6")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#f8fafc")}
-            >
-              <GithubIcon size={28} />
-            </a>
-          </div>
+          <SocialLinks />
         </div>
       </div>
     </section>
