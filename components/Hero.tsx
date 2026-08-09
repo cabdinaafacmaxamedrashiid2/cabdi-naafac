@@ -125,26 +125,38 @@ export default function Hero() {
           </h2>
 
           {/* Buttons Row */}
-          <div style={{ display: "flex", gap: "1rem", marginBottom: "2rem" }}>
+          <div style={{ display: "flex", gap: "1.5rem", marginBottom: "2.5rem" }}>
             <a
               href="#"
               style={{
-                padding: "12px 24px",
-                borderRadius: "30px",
-                border: "2px solid #3b82f6",
-                color: "#f8fafc",
-                fontWeight: 600,
+                position: "relative",
+                padding: "16px 36px",
+                fontSize: "1rem",
+                fontWeight: 700,
+                color: "#ffffff",
                 textDecoration: "none",
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+                border: "2px solid #00f7ff",
+                borderRadius: "50px",
+                overflow: "hidden",
+                transition: "all 0.4s ease",
+                boxShadow: "0 0 15px rgba(0, 247, 255, 0.2)",
                 display: "flex",
                 alignItems: "center",
                 gap: "8px",
-                transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(59, 130, 246, 0.1)";
+                e.currentTarget.style.background = "#00f7ff";
+                e.currentTarget.style.color = "#020817";
+                e.currentTarget.style.boxShadow = "0 0 25px rgba(0, 247, 255, 0.6), 0 0 50px rgba(0, 247, 255, 0.4)";
+                e.currentTarget.style.transform = "translateY(-3px)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.boxShadow = "0 0 15px rgba(0, 247, 255, 0.2)";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               Download CV
@@ -152,22 +164,33 @@ export default function Hero() {
             <a
               href="#contact"
               style={{
-                padding: "12px 24px",
-                borderRadius: "30px",
-                background: "#f8fafc",
-                border: "2px solid #f8fafc",
-                color: "#0f172a", // Dark text
-                fontWeight: 600,
+                position: "relative",
+                padding: "16px 36px",
+                fontSize: "1rem",
+                fontWeight: 700,
+                color: "#ffffff",
                 textDecoration: "none",
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+                border: "2px solid #f59e0b",
+                borderRadius: "50px",
+                overflow: "hidden",
+                transition: "all 0.4s ease",
+                boxShadow: "0 0 15px rgba(245, 158, 11, 0.2)",
                 display: "flex",
                 alignItems: "center",
-                transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#e2e8f0";
+                e.currentTarget.style.background = "#f59e0b";
+                e.currentTarget.style.color = "#020817";
+                e.currentTarget.style.boxShadow = "0 0 25px rgba(245, 158, 11, 0.6), 0 0 50px rgba(245, 158, 11, 0.4)";
+                e.currentTarget.style.transform = "translateY(-3px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#f8fafc";
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.boxShadow = "0 0 15px rgba(245, 158, 11, 0.2)";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               Contact Info
