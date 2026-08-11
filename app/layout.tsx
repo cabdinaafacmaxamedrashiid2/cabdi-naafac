@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 export const metadata: Metadata = {
   title: "Cabdi Nafaac | Full Stack Developer - Somalia",
@@ -70,6 +71,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <ScrollToTop />
+        <WhatsAppWidget />
       </body>
     </html>
   );
