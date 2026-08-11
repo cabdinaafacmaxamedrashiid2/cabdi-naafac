@@ -127,7 +127,8 @@ export default function Hero() {
           {/* Buttons Row */}
           <div style={{ display: "flex", gap: "1.5rem", marginBottom: "2.5rem" }}>
             <a
-              href="#"
+              href="/cv.pdf"
+              download="Cabdi_Naafac_CV.pdf"
               style={{
                 position: "relative",
                 padding: "16px 36px",

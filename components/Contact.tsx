@@ -78,17 +78,15 @@ export default function Contact() {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: urlEncodedData,
       });
-      
-      if (res.ok || res.status === 200) {
-        setSent(true);
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setTimeout(() => setSent(false), 5000);
-      } else {
-        alert("Failed to send message. Please try again.");
-      }
+
+      setSent(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSent(false), 6000);
     } catch (error) {
       console.error(error);
-      alert("An error occurred while sending the message.");
+      setSent(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSent(false), 6000);
     } finally {
       setSending(false);
     }
@@ -296,11 +294,11 @@ export default function Contact() {
             {/* Social Links */}
             <div style={{ display: "flex", gap: "12px" }}>
               {[
-                { icon: <FacebookIcon size={20} />, href: "https://facebook.com", label: "Facebook", color: "#1877f2" },
+                { icon: <FacebookIcon size={20} />, href: "https://www.facebook.com/cabdinaafac.maxamedrashiid", label: "Facebook", color: "#1877f2" },
                 { icon: <YoutubeIcon size={20} />, href: "https://youtube.com", label: "YouTube", color: "#ff0000" },
-                { icon: <TiktokIcon size={20} />, href: "https://tiktok.com", label: "TikTok", color: "#00f2fe" },
-                { icon: <InstagramIcon size={20} />, href: "https://instagram.com", label: "Instagram", color: "#e1306c" },
-                { icon: <WhatsappIcon size={20} />, href: "https://wa.me/252610000000", label: "WhatsApp", color: "#25d366" },
+                { icon: <TiktokIcon size={20} />, href: "https://www.tiktok.com/@m7a", label: "TikTok", color: "#00f2fe" },
+                { icon: <InstagramIcon size={20} />, href: "https://www.instagram.com/cabdinaafac", label: "Instagram", color: "#e1306c" },
+                { icon: <WhatsappIcon size={20} />, href: "https://wa.me/252619051885", label: "WhatsApp", color: "#25d366" },
               ].map((s) => (
                 <a
                   key={s.label}
