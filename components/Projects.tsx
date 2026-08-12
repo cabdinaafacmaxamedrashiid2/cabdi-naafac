@@ -58,7 +58,7 @@ export default function Projects() {
       id="projects"
       style={{
         padding: "100px 0",
-        background: "linear-gradient(180deg, #020817, #0a1628)",
+        background: "linear-gradient(180deg, #0d0d1a, #12122a)",
         position: "relative",
       }}
     >

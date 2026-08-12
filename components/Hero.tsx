@@ -38,7 +38,7 @@ export default function Hero() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(135deg, #020817 0%, #0a1628 50%, #020817 100%)",
+        background: "linear-gradient(135deg, #0d0d1a 0%, #12122a 50%, #0d0d1a 100%)",
         padding: "100px 20px",
       }}
     >
@@ -149,7 +149,7 @@ export default function Hero() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "#00f7ff";
-                e.currentTarget.style.color = "#020817";
+                e.currentTarget.style.color = "#0d0d1a";
                 e.currentTarget.style.boxShadow = "0 0 25px rgba(0, 247, 255, 0.6), 0 0 50px rgba(0, 247, 255, 0.4)";
                 e.currentTarget.style.transform = "translateY(-3px)";
               }}
@@ -183,7 +183,7 @@ export default function Hero() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "#f59e0b";
-                e.currentTarget.style.color = "#020817";
+                e.currentTarget.style.color = "#0d0d1a";
                 e.currentTarget.style.boxShadow = "0 0 25px rgba(245, 158, 11, 0.6), 0 0 50px rgba(245, 158, 11, 0.4)";
                 e.currentTarget.style.transform = "translateY(-3px)";
               }}

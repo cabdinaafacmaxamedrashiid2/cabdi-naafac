@@ -48,7 +48,7 @@ export default function Gallery() {
       ref={ref}
       style={{
         padding: "100px 0",
-        background: "linear-gradient(180deg, #020817, #0a1628)",
+        background: "linear-gradient(180deg, #0d0d1a, #12122a)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -191,7 +191,7 @@ export default function Gallery() {
             position: "fixed",
             inset: 0,
             zIndex: 9999,
-            background: "rgba(2, 8, 23, 0.92)",
+            background: "rgba(13, 13, 26, 0.92)",
             backdropFilter: "blur(20px)",
             display: "flex",
             alignItems: "center",
@@ -208,7 +208,7 @@ export default function Gallery() {
               width: "100%",
               borderRadius: "24px",
               overflow: "hidden",
-              background: "#0a1628",
+              background: "#12122a",
               border: "1px solid rgba(59, 130, 246, 0.3)",
               boxShadow: "0 25px 50px rgba(0,0,0,0.7)",
             }}
@@ -224,7 +224,7 @@ export default function Gallery() {
                 width: 40,
                 height: 40,
                 borderRadius: "50%",
-                background: "rgba(2, 8, 23, 0.7)",
+                background: "rgba(13, 13, 26, 0.7)",
                 border: "1px solid rgba(255,255,255,0.2)",
                 color: "#fff",
                 display: "flex",

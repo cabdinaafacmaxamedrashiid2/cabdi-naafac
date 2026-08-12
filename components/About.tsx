@@ -23,7 +23,7 @@ export default function About() {
       ref={sectionRef}
       style={{
         padding: "120px 0",
-        background: "linear-gradient(180deg, #020817 0%, #0a1628 100%)",
+        background: "linear-gradient(180deg, #0d0d1a 0%, #12122a 100%)",
         position: "relative",
         overflow: "hidden",
       }}

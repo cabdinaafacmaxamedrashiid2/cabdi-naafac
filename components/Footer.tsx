@@ -34,7 +34,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "linear-gradient(180deg, #0a1628, #020817)",
+        background: "linear-gradient(180deg, #12122a, #0d0d1a)",
         borderTop: "1px solid rgba(59, 130, 246, 0.1)",
         padding: "3rem 0 1.5rem",
       }}

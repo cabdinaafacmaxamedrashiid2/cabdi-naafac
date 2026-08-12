@@ -71,7 +71,7 @@ export default function Navbar() {
         right: 0,
         zIndex: 1000,
         transition: "all 0.4s ease",
-        background: scrolled ? "rgba(2, 8, 23, 0.95)" : "transparent",
+        background: scrolled ? "rgba(13, 13, 26, 0.95)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         borderBottom: scrolled ? "1px solid rgba(59, 130, 246, 0.15)" : "none",
         boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.5)" : "none",
@@ -182,7 +182,7 @@ export default function Navbar() {
                   top: "calc(100% + 8px)",
                   left: "50%",
                   transform: "translateX(-50%)",
-                  background: "rgba(10, 22, 40, 0.98)",
+                  background: "rgba(18, 18, 42, 0.98)",
                   backdropFilter: "blur(20px)",
                   border: "1px solid rgba(59, 130, 246, 0.2)",
                   borderRadius: "16px",
@@ -249,7 +249,7 @@ export default function Navbar() {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "#00f7ff";
-              e.currentTarget.style.color = "#020817";
+              e.currentTarget.style.color = "#0d0d1a";
               e.currentTarget.style.boxShadow = "0 0 20px rgba(0, 247, 255, 0.6), 0 0 40px rgba(0, 247, 255, 0.4)";
               e.currentTarget.style.transform = "translateY(-2px)";
             }}
@@ -291,7 +291,7 @@ export default function Navbar() {
       {isOpen && (
         <div
           style={{
-            background: "rgba(2, 8, 23, 0.97)",
+            background: "rgba(13, 13, 26, 0.97)",
             backdropFilter: "blur(20px)",
             borderTop: "1px solid rgba(59,130,246,0.15)",
             padding: "1rem",

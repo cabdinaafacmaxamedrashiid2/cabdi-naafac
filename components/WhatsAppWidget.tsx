@@ -26,7 +26,7 @@ export default function WhatsAppWidget() {
             bottom: "100px",
             right: "2rem",
             zIndex: 9998,
-            background: "rgba(10, 22, 40, 0.97)",
+            background: "rgba(18, 18, 42, 0.97)",
             border: "1px solid rgba(37, 211, 102, 0.3)",
             borderRadius: "20px",
             padding: "1.25rem",
@@ -69,7 +69,7 @@ export default function WhatsAppWidget() {
                   height: 12,
                   borderRadius: "50%",
                   background: "#25d366",
-                  border: "2px solid #0a1628",
+                  border: "2px solid #12122a",
                   animation: "pulse-green 2s infinite",
                 }}
               />

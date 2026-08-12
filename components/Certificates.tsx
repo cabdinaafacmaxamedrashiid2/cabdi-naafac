@@ -61,7 +61,7 @@ export default function Certificates() {
       id="certificates"
       style={{
         padding: "100px 0",
-        background: "linear-gradient(180deg, #0a1628, #020817)",
+        background: "linear-gradient(180deg, #12122a, #0d0d1a)",
         position: "relative",
         overflow: "hidden",
       }}
