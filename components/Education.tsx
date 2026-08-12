@@ -55,7 +55,7 @@ export default function Education() {
       id="education"
       style={{
         padding: "100px 0",
-        background: "linear-gradient(180deg, #0a0f1e, #111827)",
+        background: "transparent",
         position: "relative",
         overflow: "hidden",
       }}

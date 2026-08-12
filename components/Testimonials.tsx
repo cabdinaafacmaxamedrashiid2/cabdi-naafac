@@ -89,7 +89,7 @@ export default function Testimonials() {
       id="testimonials"
       style={{
         padding: "100px 0",
-        background: "linear-gradient(180deg, #111827, #0a0f1e)",
+        background: "transparent",
         position: "relative",
         overflow: "hidden",
       }}

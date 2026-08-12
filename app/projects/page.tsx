@@ -72,7 +72,7 @@ export default function ProjectsPage() {
     <div
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(180deg, #0a0f1e 0%, #111827 50%, #0a0f1e 100%)",
+        background: "transparent",
         paddingTop: "100px",
         paddingBottom: "80px",
       }}
