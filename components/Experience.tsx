@@ -38,7 +38,7 @@ export default function Experience() {
       id="experience"
       style={{
         padding: "100px 0",
-        background: "linear-gradient(180deg, #12122a, #0d0d1a)",
+        background: "linear-gradient(180deg, #1a0540, #0f0028)",
         position: "relative",
       }}
     >

@@ -58,7 +58,7 @@ export default function FAQ() {
       id="faq"
       style={{
         padding: "100px 0",
-        background: "linear-gradient(180deg, #0d0d1a, #12122a)",
+        background: "linear-gradient(180deg, #0f0028, #1a0540)",
         position: "relative",
         overflow: "hidden",
       }}

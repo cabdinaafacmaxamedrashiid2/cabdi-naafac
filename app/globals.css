@@ -2,18 +2,18 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #0d0d1a;
-  --bg-secondary: #12122a;
-  --bg-card: rgba(18, 18, 42, 0.75);
-  --blue-primary: #818cf8;
-  --blue-secondary: #6366f1;
-  --blue-glow: #a5b4fc;
-  --cyan-accent: #7c3aed;
-  --text-primary: #f1f5f9;
-  --text-secondary: #a0a0c0;
-  --border-color: rgba(129, 140, 248, 0.2);
-  --glass-bg: rgba(18, 18, 42, 0.65);
-  --glass-border: rgba(129, 140, 248, 0.2);
+  --bg-primary: #0f0028;
+  --bg-secondary: #1a0540;
+  --bg-card: rgba(26, 5, 64, 0.75);
+  --blue-primary: #a855f7;
+  --blue-secondary: #7c3aed;
+  --blue-glow: #c084fc;
+  --cyan-accent: #e879f9;
+  --text-primary: #f5f0ff;
+  --text-secondary: #c4b5fd;
+  --border-color: rgba(168, 85, 247, 0.25);
+  --glass-bg: rgba(26, 5, 64, 0.6);
+  --glass-border: rgba(168, 85, 247, 0.25);
 }
 
 * {
