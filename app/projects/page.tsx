@@ -72,7 +72,7 @@ export default function ProjectsPage() {
     <div
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(180deg, #0f0028 0%, #1a0540 50%, #0f0028 100%)",
+        background: "linear-gradient(180deg, #0a0f1e 0%, #111827 50%, #0a0f1e 100%)",
         paddingTop: "100px",
         paddingBottom: "80px",
       }}
@@ -179,7 +179,7 @@ export default function ProjectsPage() {
                 marginBottom: "6rem",
                 padding: "3rem",
                 borderRadius: "28px",
-                background: isHovered ? "rgba(26, 5, 64, 0.7)" : "rgba(15, 0, 40, 0.4)",
+                background: isHovered ? "rgba(17, 24, 39, 0.7)" : "rgba(10, 15, 30, 0.4)",
                 border: isHovered ? "1px solid rgba(59, 130, 246, 0.3)" : "1px solid rgba(59, 130, 246, 0.1)",
                 transition: "all 0.4s ease",
                 boxShadow: isHovered ? "0 20px 60px rgba(0,0,0,0.4)" : "none",
