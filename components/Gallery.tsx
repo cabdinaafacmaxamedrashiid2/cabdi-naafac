@@ -208,7 +208,7 @@ export default function Gallery() {
               width: "100%",
               borderRadius: "24px",
               overflow: "hidden",
-              background: "#111827",
+              background: "#12101f",
               border: "1px solid rgba(59, 130, 246, 0.3)",
               boxShadow: "0 25px 50px rgba(0,0,0,0.7)",
             }}

@@ -95,7 +95,7 @@ export default function Stats() {
     <section
       style={{
         padding: "80px 0",
-        background: "linear-gradient(135deg, #111827, #0a0f1e)",
+        background: "linear-gradient(135deg, #12101f, #0d0d1a)",
         position: "relative",
         overflow: "hidden",
       }}

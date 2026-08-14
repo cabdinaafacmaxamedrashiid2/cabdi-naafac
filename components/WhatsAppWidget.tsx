@@ -69,7 +69,7 @@ export default function WhatsAppWidget() {
                   height: 12,
                   borderRadius: "50%",
                   background: "#25d366",
-                  border: "2px solid #111827",
+                  border: "2px solid #12101f",
                   animation: "pulse-green 2s infinite",
                 }}
               />

@@ -249,7 +249,7 @@ export default function Navbar() {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "#00f7ff";
-              e.currentTarget.style.color = "#0a0f1e";
+              e.currentTarget.style.color = "#0d0d1a";
               e.currentTarget.style.boxShadow = "0 0 20px rgba(0, 247, 255, 0.6), 0 0 40px rgba(0, 247, 255, 0.4)";
               e.currentTarget.style.transform = "translateY(-2px)";
             }}
