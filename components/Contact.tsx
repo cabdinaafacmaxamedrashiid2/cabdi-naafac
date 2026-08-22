@@ -68,28 +68,25 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    try {
-      const form = e.target as HTMLFormElement;
-      const data = new FormData(form);
-      const urlEncodedData = new URLSearchParams(data as any).toString();
-      
-      const res = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: urlEncodedData,
-      });
+    
+    setTimeout(() => {
+      // Dhis fariinta WhatsApp-ka
+      const text = `Hello Cabdi Naafac! Waxaan ka soo booqday website-kaaga.
 
-      setSent(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSent(false), 6000);
-    } catch (error) {
-      console.error(error);
-      setSent(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSent(false), 6000);
-    } finally {
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Subject:* ${formData.subject}
+*Message:* ${formData.message}`;
+
+      const whatsappUrl = `https://wa.me/252619051885?text=${encodeURIComponent(text)}`;
+      
+      window.open(whatsappUrl, "_blank");
+      
       setSending(false);
-    }
+      setSent(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSent(false), 6000);
+    }, 1000); // Wax yar hakad ah si ay u muuqato inuu dirayo
   };
 
   const contactInfo = [
