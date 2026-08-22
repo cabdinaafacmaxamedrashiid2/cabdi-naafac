@@ -7,25 +7,52 @@ import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 export const metadata: Metadata = {
-  title: "Cabdi Nafaac | Full Stack Developer - Somalia",
+  title: "Cabdi Naafac | Full Stack Developer - Mogadishu, Somalia",
   description:
-    "Cabdi Nafaac is a Full Stack Developer from Mogadishu, Somalia, specializing in modern web and mobile application development with React, Node.js, and cutting-edge technologies.",
+    "Cabdi Naafac waa Full Stack Developer ka yimid Mogadishu, Somalia. Wuxuu dhisaa web iyo mobile applications casri ah isticmaalaya React, Next.js, Node.js. | Cabdi Naafac is a professional Full Stack Developer from Mogadishu, Somalia specializing in React, Next.js, Node.js, and mobile app development.",
   keywords: [
+    "Cabdi Naafac",
     "Cabdi Nafaac",
-    "Full Stack Developer",
-    "Somalia",
-    "Mogadishu",
-    "Web Developer",
-    "React",
-    "Node.js",
-    "Mobile App Developer",
+    "cabdinaafac",
+    "Full Stack Developer Somalia",
+    "Web Developer Mogadishu",
+    "Somalia Developer",
+    "React Developer Somalia",
+    "Next.js Developer",
+    "Node.js Developer",
+    "Mobile App Developer Somalia",
+    "Jazera University",
+    "Portfolio Somalia",
+    "Software Engineer Somalia",
+    "Cabdi Naafac Full Stack Developer",
+    "Somali Developer",
   ],
-  authors: [{ name: "Cabdi Nafaac" }],
+  authors: [{ name: "Cabdi Naafac", url: "https://cabdinaafac.netlify.app" }],
+  creator: "Cabdi Naafac",
+  publisher: "Cabdi Naafac",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   openGraph: {
-    title: "Cabdi Nafaac | Full Stack Developer",
+    title: "Cabdi Naafac | Full Stack Developer - Somalia",
     description:
-      "Building Modern Web & Mobile Applications from Mogadishu, Somalia",
+      "Professional Full Stack Developer from Mogadishu, Somalia. Building modern web & mobile apps with React, Next.js, Node.js.",
     type: "website",
+    url: "https://cabdinaafac.netlify.app",
+    siteName: "Cabdi Naafac Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cabdi Naafac | Full Stack Developer",
+    description: "Full Stack Developer from Mogadishu, Somalia",
+  },
+  alternates: {
+    canonical: "https://cabdinaafac.netlify.app",
   },
 };
 
