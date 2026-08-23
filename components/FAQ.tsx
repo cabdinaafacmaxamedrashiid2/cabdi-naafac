@@ -5,35 +5,35 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 const faqs = [
   {
     q: "What technologies do you specialize in?",
-    a: "I specialize in the MERN stack (MongoDB, Express.js, React.js, Node.js), React Native for mobile apps, TypeScript, and Python for AI/ML projects. I'm always learning and adapting to new technologies.",
+    a: "I specialize in React.js, Next.js, Node.js, Express.js, and React Native for mobile apps. I also work with TypeScript, PostgreSQL, MongoDB, Firebase, and Tailwind CSS. I'm always learning and adapting to new technologies.",
   },
   {
     q: "Do you take freelance projects?",
-    a: "Yes! I'm actively available for freelance projects — from small business websites to complex enterprise applications. Feel free to reach out via the contact form to discuss your project.",
+    a: "Yes! I'm actively available for freelance projects — from small business websites to full-stack web and mobile applications. Feel free to reach out via WhatsApp (+252 619 051 885) or the contact form to discuss your project.",
   },
   {
     q: "How long does a typical project take?",
-    a: "Project timelines vary depending on complexity. A simple landing page might take 1-2 weeks, while a full-stack web application could take 4-12 weeks. I'll provide a detailed timeline estimate during our initial consultation.",
+    a: "Project timelines vary depending on complexity. A simple landing page might take 1-2 weeks, while a full-stack web application could take 4-8 weeks. I'll provide a detailed timeline estimate during our initial consultation.",
   },
   {
     q: "Do you provide ongoing maintenance and support?",
-    a: "Absolutely! I offer post-launch maintenance, bug fixes, feature updates, and technical support. We can discuss a suitable maintenance plan based on your needs.",
+    a: "Yes! After launching your project, I offer ongoing maintenance, bug fixes, and feature updates. We can discuss a suitable support plan based on your needs and budget.",
   },
   {
     q: "Can you work with existing codebases?",
-    a: "Yes, I'm experienced in reviewing, refactoring, and extending existing codebases. Whether you need performance optimization, bug fixes, or new feature development, I can adapt to your current tech stack.",
+    a: "Yes, I'm experienced in reviewing, refactoring, and extending existing codebases. Whether you need performance optimization, bug fixes, or new features, I can adapt to your current tech stack.",
   },
   {
     q: "What is your development process?",
-    a: "I follow an agile development approach: discovery & planning → design & prototyping → development → testing & QA → deployment → support. I keep clients informed at every stage with regular updates.",
+    a: "I follow a clear process: requirements gathering → design & planning → development → testing → deployment → support. I keep clients updated at every stage with regular communication via WhatsApp or email.",
   },
   {
     q: "Do you build mobile apps?",
-    a: "Yes! I build cross-platform mobile applications using React Native, which allows me to deliver iOS and Android apps from a single codebase, saving time and cost while maintaining quality.",
+    a: "Yes! I build cross-platform mobile applications using React Native and Expo, which delivers both iOS and Android apps from a single codebase — saving time and cost while maintaining high quality.",
   },
   {
     q: "How do I get started working with you?",
-    a: "Simply reach out through my contact form, email, or phone. Tell me about your project, goals, and timeline. I'll respond within 24 hours with next steps and a free consultation.",
+    a: "Simply message me on WhatsApp (+252 619 051 885), send an email to cabdinaafacmaxamedrashiid237@gmail.com, or use the contact form below. Tell me about your project and I'll respond within 24 hours!",
   },
 ];
 
