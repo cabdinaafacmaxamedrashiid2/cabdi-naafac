@@ -4,36 +4,32 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqs = [
   {
-    q: "What technologies do you specialize in?",
-    a: "I specialize in React.js, Next.js, Node.js, Express.js, and React Native for mobile apps. I also work with TypeScript, PostgreSQL, MongoDB, Firebase, and Tailwind CSS. I'm always learning and adapting to new technologies.",
+    q: "Who is Cabdi Naafac?",
+    a: "Cabdi Naafac is a professional Full Stack Developer & Software Engineer based in Mogadishu, Somalia. He specializes in building high-performance, modern web and mobile applications using React, Next.js, Node.js, and React Native.",
   },
   {
-    q: "Do you take freelance projects?",
-    a: "Yes! I'm actively available for freelance projects — from small business websites to full-stack web and mobile applications. Feel free to reach out via WhatsApp (+252 619 051 885) or the contact form to discuss your project.",
+    q: "What is Cabdi Naafac's educational background?",
+    a: "Cabdi studied Computer Science at Jazeera University (2021 – 2026). His studies provided him with a strong academic foundation in software engineering principles, algorithms, modern web technologies, and database architecture.",
   },
   {
-    q: "How long does a typical project take?",
-    a: "Project timelines vary depending on complexity. A simple landing page might take 1-2 weeks, while a full-stack web application could take 4-8 weeks. I'll provide a detailed timeline estimate during our initial consultation.",
+    q: "What technologies and tech stack does Cabdi specialize in?",
+    a: "Cabdi specializes in full-stack JavaScript and TypeScript ecosystems: React.js, Next.js, Node.js, Express.js, and React Native for mobile applications. For data storage, he works proficiently with PostgreSQL, MongoDB, and Firebase.",
   },
   {
-    q: "Do you provide ongoing maintenance and support?",
-    a: "Yes! After launching your project, I offer ongoing maintenance, bug fixes, and feature updates. We can discuss a suitable support plan based on your needs and budget.",
+    q: "Is Cabdi available for freelance projects or full-time roles?",
+    a: "Yes! Cabdi is actively available for freelance contracts, consulting, remote full-time positions, and collaborative tech projects. Whether you are a startup needing an MVP or an established business seeking digital transformation, he can help.",
   },
   {
-    q: "Can you work with existing codebases?",
-    a: "Yes, I'm experienced in reviewing, refactoring, and extending existing codebases. Whether you need performance optimization, bug fixes, or new features, I can adapt to your current tech stack.",
+    q: "How long does it take Cabdi to deliver a typical project?",
+    a: "Project timelines depend on scale and requirements: a modern landing page or portfolio usually takes 1–2 weeks, while full-stack web platforms and cross-platform mobile apps take 4–8 weeks with structured milestone deliveries.",
   },
   {
-    q: "What is your development process?",
-    a: "I follow a clear process: requirements gathering → design & planning → development → testing → deployment → support. I keep clients updated at every stage with regular communication via WhatsApp or email.",
+    q: "Does Cabdi provide ongoing maintenance and support after delivery?",
+    a: "Yes! Cabdi provides continuous technical support, bug fixing, performance optimization, and feature enhancements after project launch to ensure everything runs smoothly and securely.",
   },
   {
-    q: "Do you build mobile apps?",
-    a: "Yes! I build cross-platform mobile applications using React Native and Expo, which delivers both iOS and Android apps from a single codebase — saving time and cost while maintaining high quality.",
-  },
-  {
-    q: "How do I get started working with you?",
-    a: "Simply message me on WhatsApp (+252 619 051 885), send an email to cabdinaafacmaxamedrashiid237@gmail.com, or use the contact form below. Tell me about your project and I'll respond within 24 hours!",
+    q: "How can clients and recruiters get in touch with Cabdi Naafac?",
+    a: "You can reach out directly via WhatsApp at +252 619 051 885, by email at cabdinaafacmaxamedrashiid237@gmail.com, or through the contact form on this website. Cabdi typically responds within 24 hours.",
   },
 ];
 
