@@ -18,19 +18,21 @@ export default function Experience() {
   }, []);
 
   const frontendSkills = [
-    { name: "HTML", level: "Experienced" },
-    { name: "CSS", level: "Experienced" },
-    { name: "SASS", level: "Intermediate" },
-    { name: "JavaScript", level: "Intermediate" },
-    { name: "TypeScript", level: "Basic" },
-    { name: "Material UI", level: "Intermediate" },
+    { name: "HTML & CSS", level: "Experienced" },
+    { name: "JavaScript", level: "Experienced" },
+    { name: "React.js", level: "Experienced" },
+    { name: "Next.js", level: "Intermediate" },
+    { name: "Tailwind CSS", level: "Experienced" },
+    { name: "React Native", level: "Intermediate" },
   ];
 
   const backendSkills = [
+    { name: "Node.js", level: "Intermediate" },
+    { name: "Express.js", level: "Intermediate" },
+    { name: "MongoDB", level: "Intermediate" },
     { name: "PostgreSQL", level: "Basic" },
-    { name: "Node JS", level: "Intermediate" },
-    { name: "Express JS", level: "Intermediate" },
-    { name: "Git", level: "Intermediate" },
+    { name: "Firebase", level: "Intermediate" },
+    { name: "Git & GitHub", level: "Experienced" },
   ];
 
   return (
