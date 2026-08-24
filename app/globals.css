@@ -172,6 +172,17 @@ body {
   transform: translateX(-50%);
 }
 
+/* Grid Layouts */
+.about-grid {
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+}
+
+.contact-grid {
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .section-title {
