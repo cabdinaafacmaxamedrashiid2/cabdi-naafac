@@ -181,6 +181,30 @@ body {
     padding: 10px 20px;
     font-size: 0.9rem;
   }
+  /* Contact grid - stack vertically on mobile */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  /* About grid - stack vertically on mobile */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  /* About cards row - stack on mobile */
+  .about-cards-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* Navbar mobile fixes */
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-cards-row {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* Light Mode Support */
