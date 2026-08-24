@@ -51,7 +51,7 @@ export default function About() {
           </p>
           <h2
             style={{
-              fontSize: "3rem",
+              fontSize: "clamp(2rem, 3.5vw, 2.6rem)",
               fontWeight: 800,
               color: "#f8fafc",
               letterSpacing: "-0.02em",

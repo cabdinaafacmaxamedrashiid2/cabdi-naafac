@@ -95,11 +95,11 @@ export default function Hero() {
         {/* Main Heading */}
         <h1
           style={{
-            fontSize: "clamp(3rem, 8vw, 6.5rem)",
+            fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)",
             fontWeight: 800,
-            lineHeight: 1.05,
-            letterSpacing: "-0.03em",
-            marginBottom: "0.3rem",
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
+            marginBottom: "0.5rem",
           }}
         >
           <span style={{
@@ -124,11 +124,11 @@ export default function Hero() {
         {/* Subtitle */}
         <h2
           style={{
-            fontSize: "clamp(1.5rem, 4vw, 2.8rem)",
-            fontWeight: 700,
-            color: "#ffffff",
-            marginBottom: "1.5rem",
-            letterSpacing: "-0.02em",
+            fontSize: "clamp(1.15rem, 2.2vw, 1.65rem)",
+            fontWeight: 600,
+            color: "#e2e8f0",
+            marginBottom: "1.25rem",
+            letterSpacing: "-0.01em",
           }}
         >
           Full Stack Developer
@@ -138,10 +138,10 @@ export default function Hero() {
         <p
           style={{
             color: "#94a3b8",
-            fontSize: "clamp(0.95rem, 2vw, 1.15rem)",
-            lineHeight: 1.8,
-            maxWidth: "620px",
-            marginBottom: "2.5rem",
+            fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)",
+            lineHeight: 1.7,
+            maxWidth: "580px",
+            marginBottom: "2rem",
           }}
         >
           Building modern, fast, and beautiful web &amp; mobile applications.
