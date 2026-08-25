@@ -68,55 +68,80 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    
-    setTimeout(() => {
-      // Dhis fariinta WhatsApp-ka
-      const text = `Hello Cabdi Naafac! Waxaan ka soo booqday website-kaaga.
 
-*Name:* ${formData.name}
-*Email:* ${formData.email}
-*Subject:* ${formData.subject}
-*Message:* ${formData.message}`;
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/cabdinaafacmaxamedrashiid237@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            _subject: formData.subject
+              ? `[Portfolio] ${formData.subject} - from ${formData.name}`
+              : `New message from ${formData.name} via Portfolio`,
+            message: formData.message,
+            _captcha: "false",
+            _template: "table",
+          }),
+        }
+      );
 
-      const whatsappUrl = `https://wa.me/252619051885?text=${encodeURIComponent(text)}`;
-      
-      window.open(whatsappUrl, "_blank");
-      
-      setSending(false);
+      if (response.ok) {
+        setSent(true);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setSent(false), 8000);
+      } else {
+        throw new Error("Failed to send message via formsubmit");
+      }
+    } catch (err) {
+      // Fallback: Open mailto directly if API fails
+      const mailtoUrl = `mailto:cabdinaafacmaxamedrashiid237@gmail.com?subject=${encodeURIComponent(
+        formData.subject || "Contact from Portfolio"
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+      window.location.href = mailtoUrl;
       setSent(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setSent(false), 6000);
-    }, 1000); // Wax yar hakad ah si ay u muuqato inuu dirayo
+      setTimeout(() => setSent(false), 8000);
+    } finally {
+      setSending(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: <Mail size={20} />,
-      label: "Email",
+      label: "Email (Direct)",
       value: "cabdinaafacmaxamedrashiid237@gmail.com",
       href: "mailto:cabdinaafacmaxamedrashiid237@gmail.com",
       color: "#ef4444",
     },
     {
+      icon: <WhatsappIcon size={20} />,
+      label: "WhatsApp Chat",
+      value: "+252 619 051 885",
+      href: "https://wa.me/252619051885?text=Hello%20Cabdi%20Naafac!%20Waxaan%20ka%20soo%20xiriirayaa%20portfolio-gaaga.",
+      color: "#22c55e",
+    },
+    {
       icon: <Phone size={20} />,
-      label: "Phone",
+      label: "Direct Phone",
       value: "+252 619 051 885",
       href: "tel:+252619051885",
-      color: "#22c55e",
+      color: "#3b82f6",
     },
     {
       icon: <MapPin size={20} />,
       label: "Location",
       value: "Mogadishu, Somalia 🇸🇴",
       href: "#",
-      color: "#3b82f6",
-    },
-    {
-      icon: <Clock size={20} />,
-      label: "Response Time",
-      value: "Within 24 hours",
-      href: "#",
-      color: "#f59e0b",
+      color: "#a855f7",
     },
   ];
 
@@ -522,6 +547,27 @@ export default function Contact() {
                     </>
                   )}
                 </button>
+
+                <div style={{ textAlign: "center", marginTop: "1.25rem" }}>
+                  <span style={{ color: "#64748b", fontSize: "0.85rem" }}>Prefer direct WhatsApp chat? </span>
+                  <a
+                    href="https://wa.me/252619051885?text=Hello%20Cabdi%20Naafac!%20Waxaan%20ka%20soo%20xiriirayaa%20portfolio-gaaga."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "#22c55e",
+                      fontWeight: 600,
+                      fontSize: "0.85rem",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "4px",
+                      marginLeft: "4px",
+                    }}
+                  >
+                    <WhatsappIcon size={16} /> Open WhatsApp
+                  </a>
+                </div>
               </form>
             )}
           </div>
