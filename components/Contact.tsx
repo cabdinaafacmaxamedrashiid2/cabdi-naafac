@@ -358,21 +358,66 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right - Contact Form */}
-          <div className="glass-card" style={{ padding: "2.5rem", borderRadius: "24px" }}>
-            <div
+          {/* Right - Two Contact Options */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+
+            {/* Option 1: WhatsApp - Standalone big green button */}
+            <a
+              href="https://wa.me/252619051885?text=Hello%20Cabdi%20Naafac!%20Waxaan%20ka%20soo%20xiriirayaa%20portfolio-gaaga."
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
-                marginBottom: "2rem",
+                gap: "1rem",
+                padding: "1.5rem 2rem",
+                borderRadius: "20px",
+                background: "linear-gradient(135deg, #128c7e, #25d366)",
+                border: "none",
+                textDecoration: "none",
+                boxShadow: "0 8px 30px rgba(37,211,102,0.35)",
+                transition: "all 0.3s",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(37,211,102,0.5)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 30px rgba(37,211,102,0.35)";
               }}
             >
-              <MessageSquare size={22} color="#3b82f6" />
-              <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "#e2e8f0" }}>
-                Send a Message
-              </h3>
+              <div style={{
+                width: 52, height: 52, borderRadius: "14px",
+                background: "rgba(255,255,255,0.2)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0,
+              }}>
+                <WhatsappIcon size={28} />
+              </div>
+              <div style={{ color: "#fff" }}>
+                <div style={{ fontWeight: 700, fontSize: "1.1rem" }}>Chat on WhatsApp</div>
+                <div style={{ fontSize: "0.88rem", opacity: 0.88 }}>+252 619 051 885 · Usually replies fast</div>
+              </div>
+              <div style={{ marginLeft: "auto", color: "rgba(255,255,255,0.7)", fontSize: "1.4rem" }}>→</div>
+            </a>
+
+            {/* Divider */}
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+              <div style={{ flex: 1, height: "1px", background: "rgba(255,255,255,0.08)" }} />
+              <span style={{ color: "#64748b", fontSize: "0.82rem", whiteSpace: "nowrap" }}>or send an email</span>
+              <div style={{ flex: 1, height: "1px", background: "rgba(255,255,255,0.08)" }} />
             </div>
+
+            {/* Option 2: Email Form */}
+            <div className="glass-card" style={{ padding: "2rem", borderRadius: "20px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1.5rem" }}>
+                <MessageSquare size={20} color="#3b82f6" />
+                <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#e2e8f0" }}>
+                  Send Email to Gmail
+                </h3>
+              </div>
 
             {sent ? (
               <div
@@ -547,30 +592,10 @@ export default function Contact() {
                     </>
                   )}
                 </button>
-
-                <div style={{ textAlign: "center", marginTop: "1.25rem" }}>
-                  <span style={{ color: "#64748b", fontSize: "0.85rem" }}>Prefer direct WhatsApp chat? </span>
-                  <a
-                    href="https://wa.me/252619051885?text=Hello%20Cabdi%20Naafac!%20Waxaan%20ka%20soo%20xiriirayaa%20portfolio-gaaga."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: "#22c55e",
-                      fontWeight: 600,
-                      fontSize: "0.85rem",
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "4px",
-                      marginLeft: "4px",
-                    }}
-                  >
-                    <WhatsappIcon size={16} /> Open WhatsApp
-                  </a>
-                </div>
               </form>
             )}
-          </div>
+            </div>{/* End Email Form glass-card */}
+          </div>{/* End Right - Two Contact Options */}
         </div>
       </div>
 
