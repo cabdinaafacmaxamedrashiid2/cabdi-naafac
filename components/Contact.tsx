@@ -79,11 +79,7 @@ export default function Contact() {
             Accept: "application/json",
           },
           body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            _subject: formData.subject
-              ? `[Portfolio] ${formData.subject} - from ${formData.name}`
-              : `New message from ${formData.name} via Portfolio`,
+            _subject: "📩 New Message from Portfolio – Cabdi Naafac",
             message: formData.message,
             _captcha: "false",
             _template: "table",
@@ -98,13 +94,11 @@ export default function Contact() {
       } else {
         throw new Error("Failed to send message via formsubmit");
       }
-    } catch (err) {
+    } catch {
       // Fallback: Open mailto directly if API fails
       const mailtoUrl = `mailto:cabdinaafacmaxamedrashiid237@gmail.com?subject=${encodeURIComponent(
-        formData.subject || "Contact from Portfolio"
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
+        "📩 New Message from Portfolio – Cabdi Naafac"
+      )}&body=${encodeURIComponent(formData.message)}`;
       window.location.href = mailtoUrl;
       setSent(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
