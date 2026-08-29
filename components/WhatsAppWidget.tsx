@@ -143,6 +143,9 @@ export default function WhatsAppWidget() {
           <p style={{ color: "#475569", fontSize: "0.72rem", textAlign: "center", margin: "10px 0 0" }}>
             🔒 Your message goes directly to WhatsApp
           </p>
+          <p style={{ color: "#334155", fontSize: "0.72rem", textAlign: "center", margin: "6px 0 0" }}>
+            ← Dib ugu soo noqo browser-ka si aad website-ka ugu laabato
+          </p>
         </div>
       )}
 

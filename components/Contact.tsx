@@ -444,115 +444,26 @@ export default function Contact() {
                 netlify-honeypot="bot-field"
               >
                 <input type="hidden" name="form-name" value="contact" />
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "1rem",
-                    marginBottom: "1rem",
-                  }}
-                  className="form-grid"
-                >
-                  <div>
-                    <label
-                      htmlFor="name"
-                      style={{ display: "block", color: "#94a3b8", fontSize: "0.85rem", marginBottom: "6px", fontWeight: 500 }}
-                    >
-                      Your Name *
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Cabdi Hassan"
-                      style={inputStyle}
-                      onFocus={(e) => {
-                        (e.target as HTMLElement).style.borderColor = "#3b82f6";
-                        (e.target as HTMLElement).style.boxShadow = "0 0 0 3px rgba(59,130,246,0.1)";
-                      }}
-                      onBlur={(e) => {
-                        (e.target as HTMLElement).style.borderColor = "rgba(59,130,246,0.2)";
-                        (e.target as HTMLElement).style.boxShadow = "none";
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      style={{ display: "block", color: "#94a3b8", fontSize: "0.85rem", marginBottom: "6px", fontWeight: 500 }}
-                    >
-                      Email Address *
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="you@example.com"
-                      style={inputStyle}
-                      onFocus={(e) => {
-                        (e.target as HTMLElement).style.borderColor = "#3b82f6";
-                        (e.target as HTMLElement).style.boxShadow = "0 0 0 3px rgba(59,130,246,0.1)";
-                      }}
-                      onBlur={(e) => {
-                        (e.target as HTMLElement).style.borderColor = "rgba(59,130,246,0.2)";
-                        (e.target as HTMLElement).style.boxShadow = "none";
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div style={{ marginBottom: "1rem" }}>
-                  <label
-                    htmlFor="subject"
-                    style={{ display: "block", color: "#94a3b8", fontSize: "0.85rem", marginBottom: "6px", fontWeight: 500 }}
-                  >
-                    Subject *
-                  </label>
-                  <input
-                    id="subject"
-                    type="text"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="Project Inquiry / Collaboration"
-                    style={inputStyle}
-                    onFocus={(e) => {
-                      (e.target as HTMLElement).style.borderColor = "#3b82f6";
-                      (e.target as HTMLElement).style.boxShadow = "0 0 0 3px rgba(59,130,246,0.1)";
-                    }}
-                    onBlur={(e) => {
-                      (e.target as HTMLElement).style.borderColor = "rgba(59,130,246,0.2)";
-                      (e.target as HTMLElement).style.boxShadow = "none";
-                    }}
-                  />
-                </div>
 
                 <div style={{ marginBottom: "1.5rem" }}>
                   <label
                     htmlFor="message"
                     style={{ display: "block", color: "#94a3b8", fontSize: "0.85rem", marginBottom: "6px", fontWeight: 500 }}
                   >
-                    Message *
+                    Your Message *
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
-                    rows={5}
+                    rows={7}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell me about your project, goals, and timeline..."
+                    placeholder="Salaam! Waxaan rabaa inaan kula shaqeeyo mashruuc..."
                     style={{
                       ...inputStyle,
                       resize: "vertical" as const,
-                      minHeight: "120px",
+                      minHeight: "150px",
                     }}
                     onFocus={(e) => {
                       (e.target as HTMLElement).style.borderColor = "#3b82f6";
