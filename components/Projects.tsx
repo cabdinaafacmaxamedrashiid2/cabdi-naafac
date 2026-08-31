@@ -19,24 +19,25 @@ const GithubIcon = ({ size = 20 }: { size?: number }) => (
 
 const projects = [
   {
-    title: "Library Management System",
-    image: "https://images.unsplash.com/photo-1568667256549-094345857637?w=800&q=80",
-    github: "https://github.com",
+    title: "Waasan.com",
+    description: "Medical & Delivery website — Home, Delivery, About Us, Prices, Contact sections. Dark modern UI.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
+    github: "https://github.com/cabdinaafacmaxamedrashiid2/waasan.com",
     demo: "#",
+    color: "#3b82f6",
   },
   {
-    title: "Smart Livestock App",
-    image: "/camel.jpg",
-    github: "https://github.com",
-    demo: "#",
-  },
-  {
-    title: "Face Recognition",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
-    github: "https://github.com",
-    demo: "#",
+    title: "Cabdi Naafac — Portfolio",
+    description: "Personal portfolio website built with Next.js, TypeScript & Tailwind CSS. Responsive dark modern design.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
+    github: "https://github.com/cabdinaafacmaxamedrashiid2/cabdi-naafac",
+    demo: "https://cabdinaafac.netlify.app",
+    color: "#8b5cf6",
   },
 ];
+
 
 export default function Projects() {
   const [isVisible, setIsVisible] = useState(false);
@@ -102,28 +103,32 @@ export default function Projects() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "2rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+            gap: "2.5rem",
+            maxWidth: "960px",
+            margin: "0 auto",
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? "translateY(0)" : "translateY(40px)",
             transition: "all 0.8s ease 0.2s",
           }}
           className="projects-grid"
         >
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <div
               key={project.title}
               className="glass-card"
               style={{
                 borderRadius: "24px",
                 overflow: "hidden",
-                border: "1px solid rgba(59, 130, 246, 0.15)",
-                textAlign: "center",
+                border: "1px solid rgba(59, 130, 246, 0.18)",
+                display: "flex",
+                flexDirection: "column",
                 transition: "all 0.3s ease",
+                background: "rgba(15, 23, 42, 0.65)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-8px)";
-                e.currentTarget.style.boxShadow = "0 20px 40px rgba(0,0,0,0.3)";
+                e.currentTarget.style.boxShadow = "0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(59,130,246,0.15)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
@@ -134,10 +139,8 @@ export default function Projects() {
               <div
                 style={{
                   width: "100%",
-                  height: "250px",
+                  height: "220px",
                   overflow: "hidden",
-                  borderRadius: "16px",
-                  margin: "0",
                   padding: "1rem",
                 }}
               >
@@ -148,77 +151,132 @@ export default function Projects() {
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    borderRadius: "12px",
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    borderRadius: "16px",
+                    border: "1px solid rgba(255,255,255,0.08)",
                   }}
                 />
               </div>
 
-              {/* Project Title */}
-              <h3
-                style={{
-                  color: "#f8fafc",
-                  fontSize: "1.3rem",
-                  fontWeight: 700,
-                  padding: "1rem 1rem 0.75rem",
-                }}
-              >
-                {project.title}
-              </h3>
+              {/* Card Body */}
+              <div style={{ padding: "1rem 1.5rem 1.75rem", display: "flex", flexDirection: "column", flex: 1 }}>
+                {/* Tech Tags */}
+                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      style={{
+                        fontSize: "0.75rem",
+                        fontWeight: 600,
+                        padding: "4px 10px",
+                        borderRadius: "12px",
+                        background: "rgba(59, 130, 246, 0.12)",
+                        color: "#60a5fa",
+                        border: "1px solid rgba(59, 130, 246, 0.25)",
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
 
-              {/* Buttons */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "1rem",
-                  padding: "0.75rem 1rem 1.5rem",
-                }}
-              >
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                {/* Project Title */}
+                <h3
                   style={{
-                    padding: "10px 22px",
-                    borderRadius: "30px",
-                    border: "2px solid rgba(59, 130, 246, 0.3)",
                     color: "#f8fafc",
-                    fontWeight: 600,
-                    fontSize: "0.9rem",
-                    textDecoration: "none",
-                    transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(59, 130, 246, 0.1)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
+                    fontSize: "1.35rem",
+                    fontWeight: 700,
+                    marginBottom: "0.5rem",
                   }}
                 >
-                  GitHub
-                </a>
-                <a
-                  href={project.demo}
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p
                   style={{
-                    padding: "10px 22px",
-                    borderRadius: "30px",
-                    border: "2px solid rgba(59, 130, 246, 0.3)",
-                    color: "#f8fafc",
-                    fontWeight: 600,
+                    color: "#94a3b8",
                     fontSize: "0.9rem",
-                    textDecoration: "none",
-                    transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(59, 130, 246, 0.1)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
+                    lineHeight: 1.6,
+                    marginBottom: "1.5rem",
+                    flex: 1,
                   }}
                 >
-                  Live Demo
-                </a>
+                  {project.description}
+                </p>
+
+                {/* Buttons */}
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "1rem",
+                  }}
+                >
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      flex: 1,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "8px",
+                      padding: "10px 18px",
+                      borderRadius: "12px",
+                      border: "1px solid rgba(59, 130, 246, 0.3)",
+                      background: "rgba(59, 130, 246, 0.08)",
+                      color: "#f8fafc",
+                      fontWeight: 600,
+                      fontSize: "0.9rem",
+                      textDecoration: "none",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "rgba(59, 130, 246, 0.2)";
+                      e.currentTarget.style.borderColor = "#3b82f6";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "rgba(59, 130, 246, 0.08)";
+                      e.currentTarget.style.borderColor = "rgba(59, 130, 246, 0.3)";
+                    }}
+                  >
+                    <GithubIcon size={18} />
+                    GitHub
+                  </a>
+
+                  {project.demo && project.demo !== "#" && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        flex: 1,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        padding: "10px 18px",
+                        borderRadius: "12px",
+                        background: "linear-gradient(135deg, #3b82f6, #06b6d4)",
+                        color: "#ffffff",
+                        fontWeight: 600,
+                        fontSize: "0.9rem",
+                        textDecoration: "none",
+                        transition: "all 0.3s ease",
+                        boxShadow: "0 4px 15px rgba(59, 130, 246, 0.3)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-2px)";
+                        e.currentTarget.style.boxShadow = "0 6px 20px rgba(59, 130, 246, 0.5)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow = "0 4px 15px rgba(59, 130, 246, 0.3)";
+                      }}
+                    >
+                      Live Demo ↗
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
