@@ -23,18 +23,18 @@ const megaMenu = [
     ],
   },
   {
-    heading: "WORK",
+    heading: "WORK & CODE",
     items: [
-      { label: "Library App", href: "#projects", desc: "Management system" },
-      { label: "Livestock App", href: "#projects", desc: "Smart farming" },
-      { label: "Face Recognition", href: "#projects", desc: "AI & biometrics" },
+      { label: "Waasan.com", href: "#projects", desc: "Medical platform" },
+      { label: "Typing Speed App", href: "#projects", desc: "Interactive tester" },
+      { label: "GitHub Live Stats", href: "#github-stats", desc: "Real-time activity" },
     ],
   },
   {
     heading: "CONNECT",
     items: [
       { label: "GitHub", href: "https://github.com/cabdinaafacmaxamedrashiid2", desc: "View my code" },
-      { label: "LinkedIn", href: "https://linkedin.com", desc: "Professional network" },
+      { label: "WhatsApp", href: "https://wa.me/252619051885", desc: "Direct chat" },
       { label: "Contact Me", href: "#contact", desc: "Get in touch" },
     ],
   },
