@@ -19,8 +19,17 @@ const GithubIcon = ({ size = 20 }: { size?: number }) => (
 
 const projects = [
   {
+    title: "Typing Speed App",
+    description: "Interactive typing test application designed to practice and measure typing speed (WPM), accuracy, and errors in real-time.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80",
+    github: "https://github.com/cabdinaafacmaxamedrashiid2",
+    demo: "#",
+    color: "#06b6d4",
+  },
+  {
     title: "Waasan.com",
-    description: "Medical & Delivery website — Home, Delivery, About Us, Prices, Contact sections. Dark modern UI.",
+    description: "Medical & Delivery web platform — featuring Home, Delivery services, About Us, Pricing packages, and Contact sections.",
     tech: ["HTML", "CSS", "JavaScript"],
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
     github: "https://github.com/cabdinaafacmaxamedrashiid2/waasan.com",
@@ -29,12 +38,21 @@ const projects = [
   },
   {
     title: "Cabdi Naafac — Portfolio",
-    description: "Personal portfolio website built with Next.js, TypeScript & Tailwind CSS. Responsive dark modern design.",
+    description: "Full-Stack personal portfolio website built with Next.js, TypeScript & Tailwind CSS. Fully responsive dark-mode UI with SEO.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
     github: "https://github.com/cabdinaafacmaxamedrashiid2/cabdi-naafac",
     demo: "https://cabdinaafac.netlify.app",
     color: "#8b5cf6",
+  },
+  {
+    title: "Digital CV & Resume",
+    description: "Interactive modern curriculum vitae platform with instant PDF export, professional typography, and responsive sections.",
+    tech: ["HTML5", "CSS3", "JavaScript", "PDF.js"],
+    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+    github: "https://github.com/cabdinaafacmaxamedrashiid2/cabdi-naafac",
+    demo: "/cv.html",
+    color: "#10b981",
   },
 ];
 
@@ -104,8 +122,8 @@ export default function Projects() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-            gap: "2.5rem",
-            maxWidth: "960px",
+            gap: "2rem",
+            maxWidth: "1140px",
             margin: "0 auto",
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? "translateY(0)" : "translateY(40px)",
