@@ -23,7 +23,7 @@ const projects = [
     description: "Interactive typing test application designed to practice and measure typing speed (WPM), accuracy, and errors in real-time.",
     tech: ["HTML", "CSS", "JavaScript"],
     image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80",
-    github: "https://github.com/cabdinaafacmaxamedrashiid2",
+    github: "https://github.com/cabdinaafacmaxamedrashiid2/typing-speed-app",
     demo: "#",
     color: "#06b6d4",
   },
