@@ -232,10 +232,89 @@
       color: #16a34a; padding: 1px 7px; border-radius: 4px;
     }
 
+    /* ── MOBILE RESPONSIVE ── */
+    @media (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+      .page {
+        margin: 0 auto;
+        border-radius: 14px;
+        width: 100%;
+        max-width: 100%;
+      }
+      .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px 20px;
+        gap: 18px;
+      }
+      .header-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      .avatar {
+        width: 95px;
+        height: 95px;
+        border-radius: 18px;
+      }
+      .header-info h1 {
+        font-size: 1.85rem;
+      }
+      .contact-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+      }
+      .contact-item {
+        font-size: 0.82rem;
+        word-break: break-word;
+        text-align: center;
+        justify-content: center;
+      }
+      .body {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 26px 20px;
+      }
+      .main {
+        padding: 26px 20px;
+      }
+      .cert-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 8px 6px;
+      }
+      .header {
+        padding: 24px 14px;
+      }
+      .header-info h1 {
+        font-size: 1.6rem;
+      }
+      .sidebar, .main {
+        padding: 20px 14px;
+      }
+    }
+
     /* ── PRINT ── */
     @media print {
-      body { background: white; }
-      .page { margin: 0; border-radius: 0; box-shadow: none; }
+      body { background: white; padding: 0; }
+      .page { margin: 0; border-radius: 0; box-shadow: none; width: 100%; max-width: 100%; }
+      .body { grid-template-columns: 1fr 1.7fr !important; }
+      .header { flex-direction: row !important; text-align: left !important; padding: 44px 48px !important; }
+      .header-info { align-items: flex-start !important; }
+      .contact-row { flex-direction: row !important; }
+      .sidebar { border-right: 1px solid #e2e8f0 !important; border-bottom: none !important; }
     }
   </style>
 </head>
@@ -446,7 +525,7 @@
       <!-- CERTIFICATIONS -->
       <div class="section">
         <div class="section-title">Certifications</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div class="cert-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
           <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px 14px;">
             <div style="font-size:0.8rem; font-weight:700; color:#1e293b;">Full Stack Web Dev</div>
             <div style="font-size:0.72rem; color:#6366f1; font-weight:600;">Udemy / Coursera · 2023</div>
