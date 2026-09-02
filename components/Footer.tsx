@@ -120,9 +120,28 @@ export default function Footer() {
             gap: "1rem",
           }}
         >
-          <p style={{ color: "#475569", fontSize: "0.85rem" }}>
-            © 2025 <span style={{ color: "#64748b", fontWeight: 600 }}>Cabdi Naafac</span>. All rights reserved.
-          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            <p style={{ color: "#475569", fontSize: "0.85rem", margin: 0 }}>
+              © 2026 <span style={{ color: "#64748b", fontWeight: 600 }}>Cabdi Naafac</span>. All rights reserved.
+            </p>
+            <a
+              href="/admin"
+              style={{
+                color: "#334155",
+                fontSize: "0.78rem",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "4px",
+                transition: "color 0.2s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#60a5fa")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#334155")}
+            >
+              🔒 Admin Login
+            </a>
+          </div>
+
           <p style={{ color: "#475569", fontSize: "0.85rem" }}>
             Built with <span style={{ color: "#3b82f6" }}>♥</span> using Next.js & TypeScript
           </p>

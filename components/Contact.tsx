@@ -8,6 +8,7 @@ import {
   MessageSquare,
   Clock,
 } from "lucide-react";
+import { addIncomingMessage } from "@/lib/adminStore";
 
 const FacebookIcon = ({ size = 20 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -70,6 +71,11 @@ export default function Contact() {
     setSending(true);
 
     try {
+      // Store in Admin Inbox
+      if (formData.message && formData.message.trim()) {
+        addIncomingMessage(formData.message.trim());
+      }
+
       const response = await fetch(
         "https://formsubmit.co/ajax/cabdinaafacmaxamedrashiid237@gmail.com",
         {

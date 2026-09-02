@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { getStoredProjects, ProjectItem } from "@/lib/adminStore";
 
 const GithubIcon = ({ size = 20 }: { size?: number }) => (
   <svg
@@ -17,8 +18,9 @@ const GithubIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
-const projects = [
+const defaultProjects: ProjectItem[] = [
   {
+    id: "proj-1",
     title: "Typing Speed App",
     description: "Interactive typing test application designed to practice and measure typing speed (WPM), accuracy, and errors in real-time.",
     tech: ["HTML", "CSS", "JavaScript"],
@@ -26,8 +28,10 @@ const projects = [
     github: "https://github.com/cabdinaafacmaxamedrashiid2/typing-speed-app",
     demo: "#",
     color: "#06b6d4",
+    createdAt: 1,
   },
   {
+    id: "proj-2",
     title: "Waasan.com",
     description: "Medical & Delivery web platform — featuring Home, Delivery services, About Us, Pricing packages, and Contact sections.",
     tech: ["HTML", "CSS", "JavaScript"],
@@ -35,8 +39,10 @@ const projects = [
     github: "https://github.com/cabdinaafacmaxamedrashiid2/waasan.com",
     demo: "#",
     color: "#3b82f6",
+    createdAt: 2,
   },
   {
+    id: "proj-3",
     title: "Cabdi Naafac — Portfolio",
     description: "Full-Stack personal portfolio website built with Next.js, TypeScript & Tailwind CSS. Fully responsive dark-mode UI with SEO.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
@@ -44,8 +50,10 @@ const projects = [
     github: "https://github.com/cabdinaafacmaxamedrashiid2/cabdi-naafac",
     demo: "https://cabdinaafac.netlify.app",
     color: "#8b5cf6",
+    createdAt: 3,
   },
   {
+    id: "proj-4",
     title: "Digital CV & Resume",
     description: "Interactive modern curriculum vitae platform with instant PDF export, professional typography, and responsive sections.",
     tech: ["HTML5", "CSS3", "JavaScript", "PDF.js"],
@@ -53,15 +61,24 @@ const projects = [
     github: "https://github.com/cabdinaafacmaxamedrashiid2/cabdi-naafac",
     demo: "/cv.html",
     color: "#10b981",
+    createdAt: 4,
   },
 ];
 
-
 export default function Projects() {
+  const [projectList, setProjectList] = useState<ProjectItem[]>(defaultProjects);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setProjectList(getStoredProjects());
+
+    const handleUpdate = () => {
+      setProjectList(getStoredProjects());
+    };
+
+    window.addEventListener("portfolio_projects_updated", handleUpdate);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setIsVisible(true);
@@ -69,7 +86,10 @@ export default function Projects() {
       { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("portfolio_projects_updated", handleUpdate);
+    };
   }, []);
 
   return (
@@ -131,9 +151,9 @@ export default function Projects() {
           }}
           className="projects-grid"
         >
-          {projects.map((project) => (
+          {projectList.map((project) => (
             <div
-              key={project.title}
+              key={project.id || project.title}
               className="glass-card"
               style={{
                 borderRadius: "24px",
