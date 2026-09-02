@@ -128,10 +128,10 @@ export default function About() {
                   <Award size={28} color="#e2e8f0" />
                 </div>
                 <h3 style={{ color: "#f8fafc", fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.25rem" }}>
-                  Experience
+                  Learning
                 </h3>
                 <p style={{ color: "#94a3b8", fontSize: "0.9rem", fontWeight: 500 }}>
-                  1+ year
+                  4+ Years
                 </p>
                 <p style={{ color: "#64748b", fontSize: "0.85rem" }}>
                   Full Stack Development
