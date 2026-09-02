@@ -5,7 +5,7 @@ import { TrendingUp, CheckCircle, Users, Layers } from "lucide-react";
 const stats = [
   {
     icon: <TrendingUp size={28} color="#3b82f6" />,
-    value: 3,
+    value: 4,
     suffix: "+",
     label: "Years of Learning",
     color: "#3b82f6",
