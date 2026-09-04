@@ -194,6 +194,59 @@ export default function About() {
               technologies and improving my skills to deliver efficient and
               scalable solutions.
             </p>
+
+            {/* Visual Roadmap Milestones */}
+            <div
+              style={{
+                marginTop: "2rem",
+                padding: "1.25rem 1.5rem",
+                background: "rgba(255, 255, 255, 0.03)",
+                borderRadius: "20px",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+              }}
+            >
+              <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#f4f4f5", marginBottom: "1rem", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+                🗺️ Career &amp; Education Roadmap
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#38bdf8", marginTop: "6px", flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#f8fafc" }}>
+                      2022 – 2026: Jazera University (B.Sc. Computer Science)
+                    </div>
+                    <div style={{ fontSize: "0.82rem", color: "#94a3b8", marginTop: "2px" }}>
+                      Core algorithms, software architecture, databases, and computer systems.
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#a855f7", marginTop: "6px", flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#f8fafc" }}>
+                      2023 – 2024: Full-Stack Engineering Mastery
+                    </div>
+                    <div style={{ fontSize: "0.82rem", color: "#94a3b8", marginTop: "2px" }}>
+                      Mastered React, Next.js, TypeScript, Node.js, Express, and PostgreSQL/MongoDB.
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#22c55e", marginTop: "6px", flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#f8fafc" }}>
+                      2025 – 2026: Commercial Products &amp; SaaS Codebases
+                    </div>
+                    <div style={{ fontSize: "0.82rem", color: "#94a3b8", marginTop: "2px" }}>
+                      Shipped Waasan.com, Typing Speed App, and production-ready digital templates.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

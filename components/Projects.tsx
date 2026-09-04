@@ -3,20 +3,17 @@ import { useEffect, useRef, useState } from "react";
 import { getStoredProjects, ProjectItem } from "@/lib/adminStore";
 import {
   Lock,
-  Sparkles,
   ExternalLink,
-  ShoppingBag,
   CheckCircle2,
   X,
   MessageSquare,
   CreditCard,
   ShieldCheck,
   Zap,
-  FolderGit2,
-  BookOpen,
+  Search,
 } from "lucide-react";
 
-const GithubIcon = ({ size = 20 }: { size?: number }) => (
+const GithubIcon = ({ size = 16 }: { size?: number }) => (
   <svg
     width={size}
     height={size}
@@ -90,6 +87,8 @@ const defaultProjects: ProjectItem[] = [
 export default function Projects() {
   const [projectList, setProjectList] = useState<ProjectItem[]>(defaultProjects);
   const [activeFilter, setActiveFilter] = useState<"all" | "free" | "premium">("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -118,9 +117,20 @@ export default function Projects() {
   }, []);
 
   const filteredProjects = projectList.filter((p) => {
-    if (activeFilter === "free") return p.tier === "free" || !p.tier;
-    if (activeFilter === "premium") return p.tier === "premium";
-    return true;
+    const matchesFilter =
+      activeFilter === "all"
+        ? true
+        : activeFilter === "free"
+        ? p.tier === "free" || !p.tier
+        : p.tier === "premium";
+
+    const matchesSearch =
+      searchQuery.trim() === "" ||
+      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.tech.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
+
+    return matchesFilter && matchesSearch;
   });
 
   const freeCount = projectList.filter((p) => p.tier === "free" || !p.tier).length;
@@ -134,8 +144,8 @@ export default function Projects() {
   const openBundleModal = () => {
     setSelectedProject({
       id: "bundle-all",
-      title: "All 4+ Production Codebases Bundle",
-      description: "Unlock full source codes, backend setups, and commercial licenses for all current & future projects in the library.",
+      title: "All Production Codebases & Templates Bundle",
+      description: "Unlock full source code, database setups, and commercial licenses for all current and future projects in the library.",
       tech: ["Next.js", "React", "TypeScript", "Tailwind", "Admin CMS"],
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
       github: "#",
@@ -151,176 +161,183 @@ export default function Projects() {
     <section
       id="projects"
       style={{
-        padding: "100px 0 120px",
+        padding: "40px 0 100px",
         background: "transparent",
         position: "relative",
       }}
     >
       <div
         ref={ref}
-        style={{ maxWidth: "1160px", margin: "0 auto", padding: "0 1.5rem" }}
+        style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 1.5rem" }}
       >
-        {/* Title */}
-        <div
-          style={{
-            textAlign: "center",
-            marginBottom: "3rem",
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(30px)",
-            transition: "all 0.6s ease",
-          }}
-        >
-          <p
-            style={{
-              color: "#38bdf8",
-              fontWeight: 600,
-              fontSize: "0.95rem",
-              marginBottom: "0.5rem",
-              letterSpacing: "0.05em",
-              textTransform: "uppercase",
-            }}
-          >
-            Official Digital Marketplace
-          </p>
-          <h2
-            style={{
-              fontSize: "clamp(2.2rem, 4vw, 3rem)",
-              fontWeight: 800,
-              color: "#f8fafc",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Project <span className="gradient-text">Store</span>
-          </h2>
-          <p style={{ color: "#94a3b8", fontSize: "1rem", maxWidth: "600px", margin: "0.75rem auto 0" }}>
-            Explore and preview projects for free, or purchase production-ready source code with complete database configurations and commercial licenses.
-          </p>
-        </div>
-
-        {/* Filter / Library Pills (Mobbin / UI8 style) */}
+        {/* Mobbin-Style Header */}
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
-            gap: "10px",
-            marginBottom: "3rem",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            marginBottom: "2.5rem",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            transition: "all 0.5s ease",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
+              fontWeight: 800,
+              color: "#f4f4f5",
+              letterSpacing: "-0.03em",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Library
+          </h1>
+          <p style={{ color: "#a1a1aa", fontSize: "1.05rem", margin: 0 }}>
+            Browse real-world web applications &amp; production-ready codebases.
+          </p>
+        </div>
+
+        {/* Mobbin Search Bar & Filter Controls */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "1rem",
+            marginBottom: "2.5rem",
             flexWrap: "wrap",
           }}
         >
-          <button
-            onClick={() => setActiveFilter("all")}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "10px 20px",
-              borderRadius: "50px",
-              background: activeFilter === "all" ? "rgba(59, 130, 246, 0.25)" : "rgba(255, 255, 255, 0.04)",
-              border: activeFilter === "all" ? "1px solid #3b82f6" : "1px solid rgba(255, 255, 255, 0.1)",
-              color: activeFilter === "all" ? "#60a5fa" : "#94a3b8",
-              fontWeight: 700,
-              fontSize: "0.88rem",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-            }}
-          >
-            <FolderGit2 size={16} />
-            <span>All Projects ({projectList.length})</span>
-          </button>
+          {/* Category Chips */}
+          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            <button
+              onClick={() => setActiveFilter("all")}
+              style={{
+                padding: "8px 18px",
+                borderRadius: "20px",
+                background: activeFilter === "all" ? "#f4f4f5" : "rgba(255, 255, 255, 0.05)",
+                color: activeFilter === "all" ? "#09090b" : "#a1a1aa",
+                fontWeight: 600,
+                fontSize: "0.85rem",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              All Apps ({projectList.length})
+            </button>
 
-          <button
-            onClick={() => setActiveFilter("free")}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "10px 20px",
-              borderRadius: "50px",
-              background: activeFilter === "free" ? "rgba(34, 197, 94, 0.22)" : "rgba(255, 255, 255, 0.04)",
-              border: activeFilter === "free" ? "1px solid #22c55e" : "1px solid rgba(255, 255, 255, 0.1)",
-              color: activeFilter === "free" ? "#4ade80" : "#94a3b8",
-              fontWeight: 700,
-              fontSize: "0.88rem",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-            }}
-          >
-            <BookOpen size={16} />
-            <span>🟢 Free Open Source ({freeCount})</span>
-          </button>
+            <button
+              onClick={() => setActiveFilter("free")}
+              style={{
+                padding: "8px 18px",
+                borderRadius: "20px",
+                background: activeFilter === "free" ? "#f4f4f5" : "rgba(255, 255, 255, 0.05)",
+                color: activeFilter === "free" ? "#09090b" : "#a1a1aa",
+                fontWeight: 600,
+                fontSize: "0.85rem",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              🟢 Free Preview ({freeCount})
+            </button>
 
-          <button
-            onClick={() => setActiveFilter("premium")}
+            <button
+              onClick={() => setActiveFilter("premium")}
+              style={{
+                padding: "8px 18px",
+                borderRadius: "20px",
+                background: activeFilter === "premium" ? "#f4f4f5" : "rgba(255, 255, 255, 0.05)",
+                color: activeFilter === "premium" ? "#09090b" : "#a1a1aa",
+                fontWeight: 600,
+                fontSize: "0.85rem",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              💎 Pro Templates ({premiumCount})
+            </button>
+          </div>
+
+          {/* Search Input */}
+          <div
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "10px 20px",
-              borderRadius: "50px",
-              background: activeFilter === "premium" ? "rgba(234, 179, 8, 0.22)" : "rgba(255, 255, 255, 0.04)",
-              border: activeFilter === "premium" ? "1px solid #eab308" : "1px solid rgba(255, 255, 255, 0.1)",
-              color: activeFilter === "premium" ? "#facc15" : "#94a3b8",
-              fontWeight: 700,
-              fontSize: "0.88rem",
-              cursor: "pointer",
-              transition: "all 0.2s ease",
+              position: "relative",
+              minWidth: "260px",
+              flex: "0 1 320px",
             }}
           >
-            <Sparkles size={16} />
-            <span>💎 Premium Store ({premiumCount})</span>
-          </button>
+            <Search
+              size={16}
+              style={{
+                position: "absolute",
+                left: 14,
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: "#71717a",
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Search apps by title or tech..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "9px 14px 9px 38px",
+                background: "rgba(24, 24, 27, 0.7)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "20px",
+                color: "#f4f4f5",
+                fontSize: "0.85rem",
+                outline: "none",
+                boxSizing: "border-box",
+              }}
+            />
+          </div>
         </div>
 
-        {/* Projects Grid */}
+        {/* Mobbin Grid of Cards */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
             gap: "2rem",
-            maxWidth: "1140px",
-            margin: "0 auto",
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? "translateY(0)" : "translateY(40px)",
-            transition: "all 0.8s ease 0.2s",
+            marginBottom: "5rem",
           }}
-          className="projects-grid"
         >
           {filteredProjects.map((project) => {
             const isPremium = project.tier === "premium";
+            const isHovered = hoveredCard === project.id;
 
             return (
               <div
                 key={project.id || project.title}
-                className="glass-card"
                 style={{
-                  borderRadius: "24px",
+                  borderRadius: "18px",
                   overflow: "hidden",
-                  border: isPremium ? "1px solid rgba(234, 179, 8, 0.3)" : "1px solid rgba(59, 130, 246, 0.18)",
+                  background: "#121215",
+                  border: "1px solid rgba(255, 255, 255, 0.08)",
                   display: "flex",
                   flexDirection: "column",
-                  transition: "all 0.3s ease",
-                  background: isPremium ? "rgba(20, 16, 32, 0.75)" : "rgba(15, 23, 42, 0.65)",
+                  transition: "transform 0.2s ease, border-color 0.2s ease",
                   position: "relative",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-8px)";
-                  e.currentTarget.style.boxShadow = isPremium
-                    ? "0 20px 40px rgba(0,0,0,0.5), 0 0 35px rgba(234, 179, 8, 0.18)"
-                    : "0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(59,130,246,0.15)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
+                onMouseEnter={() => setHoveredCard(project.id)}
+                onMouseLeave={() => setHoveredCard(null)}
               >
-                {/* Project Image & Badge Overlay */}
+                {/* Screenshot Container with Mobbin Floating Hover Pills */}
                 <div
                   style={{
-                    width: "100%",
-                    height: "210px",
-                    overflow: "hidden",
-                    padding: "1rem 1rem 0",
                     position: "relative",
+                    width: "100%",
+                    height: "230px",
+                    overflow: "hidden",
+                    background: "#18181b",
                   }}
                 >
                   <img
@@ -330,164 +347,98 @@ export default function Projects() {
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      borderRadius: "16px",
-                      border: "1px solid rgba(255,255,255,0.08)",
+                      transition: "transform 0.3s ease",
+                      transform: isHovered ? "scale(1.03)" : "scale(1)",
                     }}
                   />
 
-                  {/* Tier Pill on top right */}
+                  {/* Mobbin Pro / Free Top-Right Tag */}
                   <div
                     style={{
                       position: "absolute",
-                      top: "1.6rem",
-                      right: "1.6rem",
-                      padding: "5px 12px",
-                      borderRadius: "50px",
-                      fontSize: "0.75rem",
+                      top: 12,
+                      right: 12,
+                      zIndex: 5,
+                      padding: "4px 10px",
+                      borderRadius: "6px",
+                      fontSize: "0.72rem",
                       fontWeight: 800,
-                      letterSpacing: "0.03em",
-                      background: isPremium ? "rgba(15, 23, 42, 0.9)" : "rgba(15, 23, 42, 0.9)",
-                      border: isPremium ? "1px solid #eab308" : "1px solid #22c55e",
-                      color: isPremium ? "#facc15" : "#4ade80",
-                      backdropFilter: "blur(10px)",
-                      boxShadow: "0 4px 15px rgba(0,0,0,0.4)",
+                      letterSpacing: "0.04em",
+                      background: isPremium ? "#ffffff" : "rgba(10, 10, 12, 0.8)",
+                      color: isPremium ? "#09090b" : "#4ade80",
+                      border: isPremium ? "none" : "1px solid rgba(74, 222, 128, 0.3)",
+                      backdropFilter: "blur(8px)",
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                    }}
+                  >
+                    {isPremium ? `PRO • $${project.price || 15}` : "FREE"}
+                  </div>
+
+                  {/* Mobbin Hover Overlay with Floating Pills (Like User's Screenshot) */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "rgba(0, 0, 0, 0.45)",
+                      backdropFilter: "blur(4px)",
                       display: "flex",
                       alignItems: "center",
-                      gap: "5px",
+                      justifyContent: "center",
+                      gap: "12px",
+                      opacity: isHovered ? 1 : 0,
+                      pointerEvents: isHovered ? "auto" : "none",
+                      transition: "opacity 0.2s ease",
+                      zIndex: 10,
+                      padding: "1rem",
                     }}
                   >
-                    {isPremium ? (
-                      <>
-                        <Lock size={12} />
-                        <span>PREMIUM • ${project.price || 15}</span>
-                      </>
-                    ) : (
-                      <>
-                        <CheckCircle2 size={12} />
-                        <span>FREE CODE</span>
-                      </>
-                    )}
-                  </div>
-                </div>
-
-                {/* Card Body */}
-                <div style={{ padding: "1.25rem 1.5rem 1.75rem", display: "flex", flexDirection: "column", flex: 1 }}>
-                  {/* Tech Tags */}
-                  <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        style={{
-                          fontSize: "0.75rem",
-                          fontWeight: 600,
-                          padding: "3px 9px",
-                          borderRadius: "8px",
-                          background: "rgba(59, 130, 246, 0.12)",
-                          color: "#60a5fa",
-                          border: "1px solid rgba(59, 130, 246, 0.2)",
-                        }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Project Title */}
-                  <h3
-                    style={{
-                      color: "#f8fafc",
-                      fontSize: "1.3rem",
-                      fontWeight: 700,
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    {project.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p
-                    style={{
-                      color: "#94a3b8",
-                      fontSize: "0.88rem",
-                      lineHeight: 1.6,
-                      marginBottom: "1.5rem",
-                      flex: 1,
-                    }}
-                  >
-                    {project.description}
-                  </p>
-
-                  {/* Action Buttons */}
-                  <div style={{ display: "flex", gap: "0.75rem" }}>
-                    {/* Live Demo is always available so visitors can see quality */}
-                    {project.demo && project.demo !== "#" ? (
+                    {/* Pill 1: Preview */}
+                    {project.demo && project.demo !== "#" && (
                       <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
-                          flex: 1,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "6px",
-                          padding: "10px 14px",
-                          borderRadius: "12px",
-                          background: "rgba(255, 255, 255, 0.05)",
-                          border: "1px solid rgba(255, 255, 255, 0.12)",
-                          color: "#f8fafc",
-                          fontWeight: 600,
+                          padding: "10px 20px",
+                          borderRadius: "30px",
+                          background: "rgba(255, 255, 255, 0.95)",
+                          color: "#09090b",
+                          fontWeight: 700,
                           fontSize: "0.85rem",
                           textDecoration: "none",
-                          transition: "all 0.2s ease",
-                        }}
-                      >
-                        <ExternalLink size={15} />
-                        <span>Live Preview</span>
-                      </a>
-                    ) : (
-                      <div
-                        style={{
-                          flex: 1,
-                          display: "flex",
+                          display: "inline-flex",
                           alignItems: "center",
-                          justifyContent: "center",
-                          padding: "10px 14px",
-                          borderRadius: "12px",
-                          background: "rgba(255, 255, 255, 0.03)",
-                          border: "1px solid rgba(255, 255, 255, 0.06)",
-                          color: "#64748b",
-                          fontSize: "0.85rem",
+                          gap: "6px",
+                          boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
+                          transition: "transform 0.15s ease",
                         }}
                       >
-                        Active Web
-                      </div>
+                        <ExternalLink size={14} />
+                        <span>Preview</span>
+                      </a>
                     )}
 
-                    {/* Code Access Button: Free opens GitHub; Premium opens Purchase Modal */}
+                    {/* Pill 2: Get Code / Unlock */}
                     {isPremium ? (
                       <button
                         onClick={() => openPurchaseModal(project)}
                         style={{
-                          flex: 1.2,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "6px",
-                          padding: "10px 14px",
-                          borderRadius: "12px",
-                          background: "linear-gradient(135deg, #eab308, #ca8a04)",
-                          color: "#0f172a",
-                          fontWeight: 800,
+                          padding: "10px 20px",
+                          borderRadius: "30px",
+                          background: "#09090b",
+                          border: "1px solid rgba(255, 255, 255, 0.3)",
+                          color: "#f4f4f5",
+                          fontWeight: 700,
                           fontSize: "0.85rem",
-                          border: "none",
                           cursor: "pointer",
-                          boxShadow: "0 4px 15px rgba(234, 179, 8, 0.35)",
-                          transition: "all 0.2s ease",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
                         }}
                       >
                         <Lock size={14} />
-                        <span>Unlock Code (${project.price || 15})</span>
+                        <span>Get Code</span>
                       </button>
                     ) : (
                       <a
@@ -495,26 +446,63 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
-                          flex: 1,
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          gap: "6px",
-                          padding: "10px 14px",
-                          borderRadius: "12px",
-                          border: "1px solid rgba(34, 197, 94, 0.3)",
-                          background: "rgba(34, 197, 94, 0.1)",
-                          color: "#4ade80",
+                          padding: "10px 20px",
+                          borderRadius: "30px",
+                          background: "#09090b",
+                          border: "1px solid rgba(255, 255, 255, 0.3)",
+                          color: "#f4f4f5",
                           fontWeight: 700,
                           fontSize: "0.85rem",
                           textDecoration: "none",
-                          transition: "all 0.2s ease",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
                         }}
                       >
-                        <GithubIcon size={16} />
-                        <span>Free GitHub</span>
+                        <GithubIcon size={14} />
+                        <span>Free Code</span>
                       </a>
                     )}
+                  </div>
+                </div>
+
+                {/* Card Meta */}
+                <div style={{ padding: "1.25rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "6px" }}>
+                    <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#f4f4f5", margin: 0 }}>
+                      {project.title}
+                    </h3>
+                  </div>
+
+                  <p
+                    style={{
+                      color: "#a1a1aa",
+                      fontSize: "0.85rem",
+                      lineHeight: 1.5,
+                      marginBottom: "1rem",
+                      flex: 1,
+                    }}
+                  >
+                    {project.description}
+                  </p>
+
+                  <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        style={{
+                          fontSize: "0.72rem",
+                          padding: "2px 8px",
+                          borderRadius: "6px",
+                          background: "rgba(255, 255, 255, 0.05)",
+                          color: "#d4d4d8",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -523,154 +511,116 @@ export default function Projects() {
         </div>
 
         {/* ================================================================= */}
-        {/* MOBBIN-INSPIRED PAYWALL BANNER                                    */}
+        {/* MOBBIN SIGNATURE PAYWALL BANNER (EXACTLY LIKE USER'S SCREENSHOT)   */}
         {/* ================================================================= */}
         <div
-          className="glass-card"
           style={{
-            maxWidth: "1040px",
-            margin: "4.5rem auto 0",
-            borderRadius: "28px",
-            padding: "3rem 2rem",
-            background: "radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15), rgba(15, 23, 42, 0.85) 75%)",
-            border: "1px solid rgba(99, 102, 241, 0.35)",
-            boxShadow: "0 25px 60px rgba(0,0,0,0.6), 0 0 40px rgba(99,102,241,0.15)",
+            maxWidth: "960px",
+            margin: "0 auto",
             textAlign: "center",
+            padding: "4rem 1.5rem 3rem",
             position: "relative",
-            overflow: "hidden",
           }}
         >
-          <div
+          {/* Main Headline */}
+          <h2
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "6px 16px",
-              borderRadius: "50px",
-              background: "rgba(99, 102, 241, 0.2)",
-              border: "1px solid rgba(99, 102, 241, 0.4)",
-              color: "#a5b4fc",
-              fontSize: "0.82rem",
-              fontWeight: 700,
-              marginBottom: "1.25rem",
-            }}
-          >
-            <Sparkles size={14} />
-            <span>COMMERCIAL DEVELOPER STORE</span>
-          </div>
-
-          <h3
-            style={{
-              fontSize: "clamp(1.8rem, 3vw, 2.4rem)",
+              fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)",
               fontWeight: 800,
-              color: "#f8fafc",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.02em",
+              color: "#ffffff",
+              letterSpacing: "-0.03em",
+              marginBottom: "1rem",
             }}
           >
-            Unlock All Production-Ready Codebases.
-          </h3>
+            Access all production codebases.
+          </h2>
 
+          {/* Subtitle */}
           <p
             style={{
-              color: "#94a3b8",
-              fontSize: "1rem",
-              maxWidth: "680px",
+              color: "#a1a1aa",
+              fontSize: "1.1rem",
+              maxWidth: "640px",
               margin: "0 auto 2rem",
-              lineHeight: 1.7,
+              lineHeight: 1.6,
             }}
           >
-            Get instant access to full Next.js/React repositories, clean database schemas, responsive UI components,
-            and setup guides. Pay easily via <strong>EVC Plus, Zaad, Sahal</strong>, or Card.
+            Get unlimited access to the full library &amp; pro features from{" "}
+            <strong style={{ color: "#ffffff" }}>$15</strong> — cancel anytime.
+            EVC Plus, Zaad &amp; Sahal accepted.
           </p>
 
+          {/* Mobbin Signature White Pill Button */}
+          <button
+            onClick={openBundleModal}
+            style={{
+              padding: "14px 44px",
+              borderRadius: "50px",
+              background: "#ffffff",
+              color: "#09090b",
+              fontWeight: 800,
+              fontSize: "1rem",
+              border: "none",
+              cursor: "pointer",
+              boxShadow: "0 4px 30px rgba(255, 255, 255, 0.2)",
+              transition: "transform 0.2s ease, opacity 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.03)";
+              e.currentTarget.style.opacity = "0.95";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.opacity = "1";
+            }}
+          >
+            Get Pro
+          </button>
+
+          {/* Social Proof Avatars Row (Like Mobbin Screenshot) */}
           <div
             style={{
               display: "flex",
+              alignItems: "center",
               justifyContent: "center",
-              gap: "1rem",
-              flexWrap: "wrap",
+              gap: "10px",
+              marginTop: "2.5rem",
+              fontSize: "0.85rem",
+              color: "#a1a1aa",
             }}
           >
-            <button
-              onClick={openBundleModal}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "14px 28px",
-                borderRadius: "50px",
-                background: "linear-gradient(135deg, #6366f1, #3b82f6)",
-                color: "#fff",
-                fontWeight: 800,
-                fontSize: "0.95rem",
-                border: "none",
-                cursor: "pointer",
-                boxShadow: "0 6px 25px rgba(99, 102, 241, 0.45)",
-              }}
-            >
-              <ShoppingBag size={18} />
-              <span>Get All Templates ($25 Bundle)</span>
-            </button>
-
-            <a
-              href="#contact"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "14px 26px",
-                borderRadius: "50px",
-                background: "rgba(255, 255, 255, 0.05)",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                color: "#cbd5e1",
-                fontWeight: 700,
-                fontSize: "0.95rem",
-                textDecoration: "none",
-              }}
-            >
-              <MessageSquare size={16} />
-              <span>Order Custom Development</span>
-            </a>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "1.75rem",
-              marginTop: "2rem",
-              flexWrap: "wrap",
-              fontSize: "0.82rem",
-              color: "#94a3b8",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <ShieldCheck size={16} color="#22c55e" />
-              <span>Verified Clean Code</span>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop"
+                alt="Member"
+                style={{ width: 24, height: 24, borderRadius: "50%", border: "2px solid #09090b", marginLeft: "-6px" }}
+              />
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop"
+                alt="Member"
+                style={{ width: 24, height: 24, borderRadius: "50%", border: "2px solid #09090b", marginLeft: "-6px" }}
+              />
+              <img
+                src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=60&h=60&fit=crop"
+                alt="Member"
+                style={{ width: 24, height: 24, borderRadius: "50%", border: "2px solid #09090b", marginLeft: "-6px" }}
+              />
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <Zap size={16} color="#3b82f6" />
-              <span>Instant Download & Access</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <CreditCard size={16} color="#a855f7" />
-              <span>EVC Plus / Zaad / Sahal Accepted</span>
-            </div>
+            <span>Supporting developers &amp; founders across Somalia and worldwide</span>
           </div>
         </div>
       </div>
 
       {/* ================================================================= */}
-      {/* PURCHASE / CHECKOUT MODAL                                         */}
+      {/* CHECKOUT / GET PRO MODAL (INSTANT WHATSAPP EVC PLUS PRE-FILL)    */}
       {/* ================================================================= */}
       {isModalOpen && selectedProject && (
         <div
           style={{
             position: "fixed",
             inset: 0,
-            background: "rgba(0, 0, 0, 0.8)",
-            backdropFilter: "blur(10px)",
+            background: "rgba(0, 0, 0, 0.85)",
+            backdropFilter: "blur(12px)",
             zIndex: 9999,
             display: "flex",
             alignItems: "center",
@@ -680,16 +630,15 @@ export default function Projects() {
           onClick={() => setIsModalOpen(false)}
         >
           <div
-            className="glass-card"
             style={{
-              maxWidth: "520px",
+              maxWidth: "500px",
               width: "100%",
-              borderRadius: "28px",
+              borderRadius: "24px",
               padding: "2.25rem 2rem",
-              background: "#0f172a",
-              border: "1px solid rgba(234, 179, 8, 0.4)",
-              boxShadow: "0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(234, 179, 8, 0.15)",
-              color: "#f8fafc",
+              background: "#121215",
+              border: "1px solid rgba(255, 255, 255, 0.12)",
+              boxShadow: "0 25px 60px rgba(0,0,0,0.8)",
+              color: "#f4f4f5",
               position: "relative",
             }}
             onClick={(e) => e.stopPropagation()}
@@ -704,42 +653,41 @@ export default function Projects() {
                 background: "rgba(255, 255, 255, 0.08)",
                 border: "none",
                 borderRadius: "50%",
-                width: 34,
-                height: 34,
+                width: 32,
+                height: 32,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#94a3b8",
+                color: "#a1a1aa",
                 cursor: "pointer",
               }}
             >
-              <X size={18} />
+              <X size={16} />
             </button>
 
-            {/* Header */}
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "0.75rem" }}>
+            {/* Modal Content */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
               <span
                 style={{
                   fontSize: "0.75rem",
                   fontWeight: 800,
                   padding: "3px 10px",
-                  borderRadius: "50px",
-                  background: "rgba(234, 179, 8, 0.18)",
-                  color: "#facc15",
-                  border: "1px solid rgba(234, 179, 8, 0.4)",
+                  borderRadius: "6px",
+                  background: "#ffffff",
+                  color: "#09090b",
                 }}
               >
-                💎 COMMERCIAL LICENSE
+                PRO ACCESS
               </span>
-              <span style={{ fontSize: "1.4rem", fontWeight: 800, color: "#4ade80", marginLeft: "auto" }}>
+              <span style={{ fontSize: "1.5rem", fontWeight: 800, color: "#ffffff" }}>
                 ${selectedProject.price || 15} USD
               </span>
             </div>
 
-            <h3 style={{ fontSize: "1.4rem", fontWeight: 800, marginBottom: "0.5rem" }}>
+            <h3 style={{ fontSize: "1.35rem", fontWeight: 800, marginBottom: "0.5rem" }}>
               {selectedProject.title}
             </h3>
-            <p style={{ color: "#94a3b8", fontSize: "0.88rem", lineHeight: 1.5, marginBottom: "1.5rem" }}>
+            <p style={{ color: "#a1a1aa", fontSize: "0.88rem", lineHeight: 1.5, marginBottom: "1.5rem" }}>
               {selectedProject.description}
             </p>
 
@@ -747,36 +695,36 @@ export default function Projects() {
             <div
               style={{
                 background: "rgba(255, 255, 255, 0.03)",
-                borderRadius: "16px",
+                borderRadius: "14px",
                 padding: "1rem 1.25rem",
                 border: "1px solid rgba(255, 255, 255, 0.08)",
                 marginBottom: "1.5rem",
               }}
             >
-              <div style={{ fontSize: "0.82rem", color: "#cbd5e1", fontWeight: 700, marginBottom: "8px" }}>
-                Maxaad Helaysaa (What&apos;s Included):
+              <div style={{ fontSize: "0.82rem", color: "#f4f4f5", fontWeight: 700, marginBottom: "8px" }}>
+                What&apos;s Included:
               </div>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "6px", fontSize: "0.82rem", color: "#94a3b8" }}>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "6px", fontSize: "0.82rem", color: "#a1a1aa" }}>
                 <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <CheckCircle2 size={14} color="#22c55e" /> Full Source Code (Next.js / TypeScript / Tailwind)
+                  <CheckCircle2 size={14} color="#4ade80" /> Complete Next.js / TypeScript / React Codebase
                 </li>
                 <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <CheckCircle2 size={14} color="#22c55e" /> Database Schemas &amp; Admin Dashboard CMS
+                  <CheckCircle2 size={14} color="#4ade80" /> Database Schemas &amp; Admin Dashboard CMS
                 </li>
                 <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <CheckCircle2 size={14} color="#22c55e" /> Step-by-Step Setup &amp; Deployment Guide
+                  <CheckCircle2 size={14} color="#4ade80" /> Step-by-Step Setup &amp; Deployment Guide
                 </li>
                 <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <CheckCircle2 size={14} color="#22c55e" /> Commercial License (Use for personal or client work)
+                  <CheckCircle2 size={14} color="#4ade80" /> Commercial License (Personal &amp; Client Projects)
                 </li>
               </ul>
             </div>
 
-            {/* Direct Buy Buttons */}
+            {/* Buy Buttons */}
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <a
                 href={`https://wa.me/252619051885?text=${encodeURIComponent(
-                  `Asc Cabdi Naafac! Waxaan rabaa inaan iibsado: "${selectedProject.title}" ($${selectedProject.price || 15} USD) via EVC Plus / Zaad / Sahal / Card.`
+                  `Asc Cabdi Naafac! Waxaan rabaa inaan iibsado: "${selectedProject.title}" ($${selectedProject.price || 15} USD) via EVC Plus / Zaad / Sahal.`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -786,24 +734,21 @@ export default function Projects() {
                   justifyContent: "center",
                   gap: "10px",
                   padding: "13px",
-                  borderRadius: "14px",
-                  background: "linear-gradient(135deg, #25d366, #16a34a)",
+                  borderRadius: "12px",
+                  background: "#22c55e",
                   color: "#ffffff",
-                  fontWeight: 800,
+                  fontWeight: 700,
                   fontSize: "0.92rem",
                   textDecoration: "none",
-                  boxShadow: "0 6px 20px rgba(37, 211, 102, 0.35)",
                 }}
               >
-                <MessageSquare size={18} />
+                <MessageSquare size={17} />
                 <span>Ku Iibso EVC Plus / Zaad / WhatsApp</span>
               </a>
 
               <a
                 href={`mailto:cabdinaafacmaxamedrashiid237@gmail.com?subject=${encodeURIComponent(
-                  `Inquiry: Purchase ${selectedProject.title}`
-                )}&body=${encodeURIComponent(
-                  `Asc Cabdi Naafac, I would like to purchase "${selectedProject.title}" ($${selectedProject.price || 15}). Please send me the payment details.`
+                  `Purchase Inquiry: ${selectedProject.title}`
                 )}`}
                 style={{
                   display: "flex",
@@ -811,10 +756,10 @@ export default function Projects() {
                   justifyContent: "center",
                   gap: "8px",
                   padding: "11px",
-                  borderRadius: "14px",
+                  borderRadius: "12px",
                   background: "rgba(255, 255, 255, 0.05)",
                   border: "1px solid rgba(255, 255, 255, 0.12)",
-                  color: "#cbd5e1",
+                  color: "#f4f4f5",
                   fontWeight: 600,
                   fontSize: "0.85rem",
                   textDecoration: "none",
@@ -825,20 +770,12 @@ export default function Projects() {
               </a>
             </div>
 
-            <div style={{ textAlign: "center", marginTop: "1rem", fontSize: "0.75rem", color: "#64748b" }}>
-              Mobile Money Number: <strong style={{ color: "#94a3b8" }}>+252 619 051 885</strong> (Cabdi Naafac)
+            <div style={{ textAlign: "center", marginTop: "1rem", fontSize: "0.75rem", color: "#71717a" }}>
+              Direct Somali Mobile Money: <strong style={{ color: "#a1a1aa" }}>+252 619 051 885</strong> (Cabdi Naafac)
             </div>
           </div>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .projects-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

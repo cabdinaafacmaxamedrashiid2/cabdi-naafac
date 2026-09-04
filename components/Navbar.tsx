@@ -2,18 +2,18 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Briefcase, ShoppingBag } from "lucide-react";
+import { Menu, X, Map, BookOpen } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  const isStore = pathname === "/store" || pathname === "/projects";
+  const isLibrary = pathname === "/store" || pathname === "/projects";
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -28,25 +28,24 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 50,
-        transition: "all 0.3s ease",
-        background: scrolled ? "rgba(10, 15, 30, 0.9)" : "rgba(10, 15, 30, 0.6)",
-        backdropFilter: "blur(16px)",
-        borderBottom: "1px solid rgba(59, 130, 246, 0.15)",
-        boxShadow: scrolled ? "0 4px 30px rgba(0, 0, 0, 0.5)" : "none",
+        transition: "all 0.25s ease",
+        background: scrolled ? "rgba(9, 9, 11, 0.92)" : "rgba(9, 9, 11, 0.75)",
+        backdropFilter: "blur(20px)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
       <div
         style={{
-          maxWidth: "1140px",
+          maxWidth: "1240px",
           margin: "0 auto",
           padding: "0 1.5rem",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          height: "72px",
+          height: "68px",
         }}
       >
-        {/* Left: Brand / Profile */}
+        {/* Left: Brand / Profile Logo */}
         <Link
           href="/"
           style={{
@@ -58,12 +57,11 @@ export default function Navbar() {
         >
           <div
             style={{
-              width: 38,
-              height: 38,
-              borderRadius: "50%",
+              width: 36,
+              height: 36,
+              borderRadius: "10px",
               overflow: "hidden",
-              border: "2px solid rgba(59,130,246,0.6)",
-              boxShadow: "0 0 15px rgba(59,130,246,0.4)",
+              border: "1.5px solid rgba(255, 255, 255, 0.15)",
               flexShrink: 0,
             }}
           >
@@ -75,107 +73,105 @@ export default function Navbar() {
           </div>
           <span
             style={{
-              fontSize: "1.2rem",
+              fontSize: "1.05rem",
               fontWeight: 800,
-              background: "linear-gradient(135deg, #60a5fa, #06b6d4)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              letterSpacing: "-0.01em",
+              color: "#f4f4f5",
+              letterSpacing: "-0.02em",
             }}
           >
             Cabdi Naafac
           </span>
         </Link>
 
-        {/* Center: The Two Dedicated Pages (1. Portfolio & 2. Project Store) */}
+        {/* Center: Mobbin-Style Segmented Navigation (Roadmap | Library) */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "8px",
-            background: "rgba(15, 23, 42, 0.75)",
-            backdropFilter: "blur(12px)",
-            padding: "4px 6px",
-            borderRadius: "50px",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
+            gap: "4px",
+            background: "rgba(24, 24, 27, 0.8)",
+            padding: "4px",
+            borderRadius: "12px",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
           }}
           className="hidden-mobile"
         >
-          {/* 1. PORTFOLIO PAGE */}
+          {/* 1. ROADMAP (PORTFOLIO) */}
           <Link
             href="/"
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "8px",
-              padding: "9px 24px",
-              borderRadius: "50px",
+              padding: "7px 18px",
+              borderRadius: "8px",
               textDecoration: "none",
-              fontSize: "0.92rem",
-              fontWeight: 700,
-              color: !isStore ? "#38bdf8" : "#94a3b8",
-              background: !isStore ? "rgba(56, 189, 248, 0.18)" : "transparent",
-              border: !isStore ? "1px solid rgba(56, 189, 248, 0.35)" : "1px solid transparent",
-              boxShadow: !isStore ? "0 0 18px rgba(56, 189, 248, 0.25)" : "none",
-              transition: "all 0.25s ease",
+              fontSize: "0.88rem",
+              fontWeight: 600,
+              color: !isLibrary ? "#f4f4f5" : "#a1a1aa",
+              background: !isLibrary ? "rgba(255, 255, 255, 0.1)" : "transparent",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              if (isLibrary) e.currentTarget.style.color = "#f4f4f5";
+            }}
+            onMouseLeave={(e) => {
+              if (isLibrary) e.currentTarget.style.color = "#a1a1aa";
             }}
           >
-            <Briefcase size={17} />
-            <span>Portfolio</span>
+            <Map size={16} />
+            <span>Roadmap</span>
           </Link>
 
-          {/* 2. DEDICATED PROJECT STORE PAGE */}
+          {/* 2. LIBRARY (STORE) */}
           <Link
             href="/store"
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "8px",
-              padding: "9px 24px",
-              borderRadius: "50px",
+              padding: "7px 18px",
+              borderRadius: "8px",
               textDecoration: "none",
-              fontSize: "0.92rem",
-              fontWeight: 700,
-              color: isStore ? "#facc15" : "#94a3b8",
-              background: isStore ? "rgba(234, 179, 8, 0.18)" : "transparent",
-              border: isStore ? "1px solid rgba(234, 179, 8, 0.35)" : "1px solid transparent",
-              boxShadow: isStore ? "0 0 18px rgba(234, 179, 8, 0.25)" : "none",
-              transition: "all 0.25s ease",
+              fontSize: "0.88rem",
+              fontWeight: 600,
+              color: isLibrary ? "#f4f4f5" : "#a1a1aa",
+              background: isLibrary ? "rgba(255, 255, 255, 0.1)" : "transparent",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              if (!isLibrary) e.currentTarget.style.color = "#f4f4f5";
+            }}
+            onMouseLeave={(e) => {
+              if (!isLibrary) e.currentTarget.style.color = "#a1a1aa";
             }}
           >
-            <ShoppingBag size={17} />
-            <span>Project Store</span>
+            <BookOpen size={16} />
+            <span>Library</span>
           </Link>
         </div>
 
-        {/* Right: Contact / Hire Me Button */}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        {/* Right: Mobbin-Style Clean Action Button */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Link
             href="/#contact"
             style={{
-              padding: "8px 22px",
-              borderRadius: "30px",
-              border: "1.5px solid #00f7ff",
-              color: "#ffffff",
+              padding: "8px 20px",
+              borderRadius: "10px",
+              background: "#ffffff",
+              color: "#09090b",
               fontWeight: 700,
-              fontSize: "0.82rem",
+              fontSize: "0.85rem",
               textDecoration: "none",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              transition: "all 0.3s ease",
-              boxShadow: "0 0 12px rgba(0, 247, 255, 0.25)",
+              transition: "all 0.2s ease",
+              boxShadow: "0 2px 10px rgba(255, 255, 255, 0.15)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#00f7ff";
-              e.currentTarget.style.color = "#0d0d1a";
-              e.currentTarget.style.boxShadow = "0 0 22px rgba(0, 247, 255, 0.6)";
-              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.opacity = "0.9";
+              e.currentTarget.style.transform = "translateY(-1px)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.color = "#ffffff";
-              e.currentTarget.style.boxShadow = "0 0 12px rgba(0, 247, 255, 0.25)";
+              e.currentTarget.style.opacity = "1";
               e.currentTarget.style.transform = "translateY(0)";
             }}
             className="hidden-mobile"
@@ -187,21 +183,21 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             style={{
-              background: "rgba(59,130,246,0.1)",
-              border: "1px solid rgba(59,130,246,0.2)",
+              background: "rgba(255, 255, 255, 0.05)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
               borderRadius: "8px",
-              width: 40,
-              height: 40,
+              width: 38,
+              height: 38,
               display: "none",
               alignItems: "center",
               justifyContent: "center",
               cursor: "pointer",
-              color: "#60a5fa",
+              color: "#f4f4f5",
             }}
             id="hamburger-btn"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
@@ -210,13 +206,12 @@ export default function Navbar() {
       {isOpen && (
         <div
           style={{
-            background: "rgba(10, 15, 30, 0.98)",
-            backdropFilter: "blur(20px)",
-            borderTop: "1px solid rgba(59,130,246,0.15)",
-            padding: "1.25rem 1rem",
+            background: "#09090b",
+            borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+            padding: "1rem",
             display: "flex",
             flexDirection: "column",
-            gap: "8px",
+            gap: "6px",
           }}
         >
           <Link
@@ -226,17 +221,17 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               gap: "10px",
-              color: !isStore ? "#38bdf8" : "#cbd5e1",
+              color: !isLibrary ? "#f4f4f5" : "#a1a1aa",
               textDecoration: "none",
-              fontSize: "1.05rem",
-              fontWeight: 700,
-              padding: "12px 16px",
-              borderRadius: "12px",
-              background: !isStore ? "rgba(56, 189, 248, 0.15)" : "transparent",
+              fontSize: "0.95rem",
+              fontWeight: 600,
+              padding: "10px 14px",
+              borderRadius: "8px",
+              background: !isLibrary ? "rgba(255, 255, 255, 0.08)" : "transparent",
             }}
           >
-            <Briefcase size={18} />
-            <span>1. Portfolio</span>
+            <Map size={17} />
+            <span>Roadmap</span>
           </Link>
 
           <Link
@@ -246,17 +241,17 @@ export default function Navbar() {
               display: "flex",
               alignItems: "center",
               gap: "10px",
-              color: isStore ? "#facc15" : "#cbd5e1",
+              color: isLibrary ? "#f4f4f5" : "#a1a1aa",
               textDecoration: "none",
-              fontSize: "1.05rem",
-              fontWeight: 700,
-              padding: "12px 16px",
-              borderRadius: "12px",
-              background: isStore ? "rgba(234, 179, 8, 0.15)" : "transparent",
+              fontSize: "0.95rem",
+              fontWeight: 600,
+              padding: "10px 14px",
+              borderRadius: "8px",
+              background: isLibrary ? "rgba(255, 255, 255, 0.08)" : "transparent",
             }}
           >
-            <ShoppingBag size={18} />
-            <span>2. Project Store</span>
+            <BookOpen size={17} />
+            <span>Library</span>
           </Link>
 
           <Link
@@ -264,16 +259,14 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             style={{
               marginTop: "0.5rem",
-              padding: "12px",
-              borderRadius: "30px",
-              border: "1.5px solid #00f7ff",
-              background: "transparent",
-              color: "#ffffff",
+              padding: "10px",
+              borderRadius: "8px",
+              background: "#ffffff",
+              color: "#09090b",
               fontWeight: 700,
               textAlign: "center",
               textDecoration: "none",
-              textTransform: "uppercase",
-              letterSpacing: "1.5px",
+              fontSize: "0.9rem",
             }}
           >
             Hire Me
@@ -282,7 +275,7 @@ export default function Navbar() {
       )}
 
       <style>{`
-        @media (max-width: 820px) {
+        @media (max-width: 768px) {
           .hidden-mobile { display: none !important; }
           #hamburger-btn { display: flex !important; }
         }
