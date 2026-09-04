@@ -77,7 +77,7 @@ export default function Contact() {
       }
 
       const response = await fetch(
-        "https://formsubmit.co/ajax/cabdinaafacmaxamedrashiid237@gmail.com",
+        "https://formsubmit.co/ajax/39270dfe3fb8d5d7534b15a252679f87",
         {
           method: "POST",
           headers: {
