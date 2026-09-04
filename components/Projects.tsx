@@ -180,7 +180,7 @@ export default function Projects() {
               textTransform: "uppercase",
             }}
           >
-            Digital Library & Code Store
+            Official Digital Marketplace
           </p>
           <h2
             style={{
@@ -190,10 +190,10 @@ export default function Projects() {
               letterSpacing: "-0.02em",
             }}
           >
-            Projects & <span className="gradient-text">Templates</span>
+            Project <span className="gradient-text">Store</span>
           </h2>
           <p style={{ color: "#94a3b8", fontSize: "1rem", maxWidth: "600px", margin: "0.75rem auto 0" }}>
-            Explore live previews for free, or unlock complete production-ready source codes with database & setup guides.
+            Explore and preview projects for free, or purchase production-ready source code with complete database configurations and commercial licenses.
           </p>
         </div>
 
