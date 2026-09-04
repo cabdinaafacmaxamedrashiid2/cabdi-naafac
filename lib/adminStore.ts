@@ -7,6 +7,8 @@ export interface ProjectItem {
   github: string;
   demo?: string;
   color?: string;
+  tier?: "free" | "premium";
+  price?: number;
   createdAt: number;
 }
 
@@ -34,6 +36,8 @@ const DEFAULT_PROJECTS: ProjectItem[] = [
     github: "https://github.com/cabdinaafacmaxamedrashiid2/typing-speed-app",
     demo: "#",
     color: "#06b6d4",
+    tier: "free",
+    price: 0,
     createdAt: Date.now() - 300000,
   },
   {
@@ -45,28 +49,34 @@ const DEFAULT_PROJECTS: ProjectItem[] = [
     github: "https://github.com/cabdinaafacmaxamedrashiid2/waasan.com",
     demo: "#",
     color: "#3b82f6",
+    tier: "free",
+    price: 0,
     createdAt: Date.now() - 200000,
   },
   {
     id: "proj-3",
-    title: "Cabdi Naafac — Portfolio",
-    description: "Full-Stack personal portfolio website built with Next.js, TypeScript & Tailwind CSS. Fully responsive dark-mode UI with SEO.",
+    title: "Cabdi Naafac — Portfolio & CMS",
+    description: "Full-Stack personal portfolio website with Next.js, TypeScript, Tailwind CSS, and a password-protected Admin Dashboard CMS.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
     github: "https://github.com/cabdinaafacmaxamedrashiid2/cabdi-naafac",
     demo: "https://cabdinaafac.netlify.app",
     color: "#8b5cf6",
+    tier: "premium",
+    price: 15,
     createdAt: Date.now() - 100000,
   },
   {
     id: "proj-4",
-    title: "Digital CV & Resume",
+    title: "Digital CV & Resume Platform",
     description: "Interactive modern curriculum vitae platform with instant PDF export, professional typography, and responsive sections.",
     tech: ["HTML5", "CSS3", "JavaScript", "PDF.js"],
     image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
     github: "https://github.com/cabdinaafacmaxamedrashiid2/cabdi-naafac",
     demo: "/cv.html",
     color: "#10b981",
+    tier: "premium",
+    price: 10,
     createdAt: Date.now() - 50000,
   },
 ];
@@ -76,7 +86,7 @@ const DEFAULT_CONFIG: SiteConfig = {
   statusText: "🟢 Available for Freelance & Full-Time Roles",
 };
 
-const PROJECTS_KEY = "cabdi_portfolio_projects_v1";
+const PROJECTS_KEY = "cabdi_portfolio_projects_v2";
 const MESSAGES_KEY = "cabdi_portfolio_messages_v1";
 const CONFIG_KEY = "cabdi_portfolio_config_v1";
 const AUTH_KEY = "cabdi_admin_session_auth";

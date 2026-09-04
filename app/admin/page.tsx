@@ -55,13 +55,24 @@ export default function AdminPage() {
   // Project Modal State
   const [showProjectModal, setShowProjectModal] = useState<boolean>(false);
   const [editingProjectId, setEditingProjectId] = useState<string | null>(null);
-  const [projectForm, setProjectForm] = useState({
+  const [projectForm, setProjectForm] = useState<{
+    title: string;
+    description: string;
+    tech: string;
+    image: string;
+    github: string;
+    demo: string;
+    tier: "free" | "premium";
+    price: number;
+  }>({
     title: "",
     description: "",
     tech: "",
     image: "",
     github: "",
     demo: "",
+    tier: "free",
+    price: 0,
   });
 
   const [toastMsg, setToastMsg] = useState<string>("");
@@ -115,6 +126,8 @@ export default function AdminPage() {
       image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
       github: "https://github.com/cabdinaafacmaxamedrashiid2",
       demo: "#",
+      tier: "free",
+      price: 0,
     });
     setShowProjectModal(true);
   };
@@ -128,6 +141,8 @@ export default function AdminPage() {
       image: proj.image,
       github: proj.github,
       demo: proj.demo || "",
+      tier: proj.tier || "free",
+      price: proj.price || 0,
     });
     setShowProjectModal(true);
   };
@@ -149,6 +164,8 @@ export default function AdminPage() {
       image: projectForm.image.trim() || "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
       github: projectForm.github.trim() || "https://github.com/cabdinaafacmaxamedrashiid2",
       demo: projectForm.demo.trim() || "#",
+      tier: projectForm.tier,
+      price: Number(projectForm.price) || 0,
     });
 
     setProjects(getStoredProjects());
@@ -954,22 +971,38 @@ export default function AdminPage() {
                   </div>
 
                   <div style={{ padding: "1.25rem", flex: 1, display: "flex", flexDirection: "column" }}>
-                    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "8px" }}>
-                      {proj.tech.map((t) => (
-                        <span
-                          key={t}
-                          style={{
-                            fontSize: "0.72rem",
-                            background: "rgba(59, 130, 246, 0.12)",
-                            color: "#60a5fa",
-                            padding: "2px 8px",
-                            borderRadius: "6px",
-                            fontWeight: 600,
-                          }}
-                        >
-                          {t}
-                        </span>
-                      ))}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px" }}>
+                      <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+                        {proj.tech.map((t) => (
+                          <span
+                            key={t}
+                            style={{
+                              fontSize: "0.72rem",
+                              background: "rgba(59, 130, 246, 0.12)",
+                              color: "#60a5fa",
+                              padding: "2px 8px",
+                              borderRadius: "6px",
+                              fontWeight: 600,
+                            }}
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      <span
+                        style={{
+                          fontSize: "0.72rem",
+                          fontWeight: 800,
+                          padding: "3px 8px",
+                          borderRadius: "6px",
+                          background: proj.tier === "premium" ? "rgba(234, 179, 8, 0.18)" : "rgba(34, 197, 94, 0.18)",
+                          color: proj.tier === "premium" ? "#facc15" : "#4ade80",
+                          border: proj.tier === "premium" ? "1px solid rgba(234, 179, 8, 0.4)" : "1px solid rgba(34, 197, 94, 0.4)",
+                        }}
+                      >
+                        {proj.tier === "premium" ? `💎 PREMIUM • $${proj.price || 15}` : "🟢 FREE"}
+                      </span>
                     </div>
 
                     <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "#f8fafc", marginBottom: "6px" }}>
@@ -1276,6 +1309,58 @@ export default function AdminPage() {
                       fontSize: "0.85rem",
                       outline: "none",
                       boxSizing: "border-box",
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "10px", marginBottom: "1.5rem" }}>
+                <div>
+                  <label style={{ display: "block", fontSize: "0.82rem", color: "#cbd5e1", marginBottom: "6px", fontWeight: 600 }}>
+                    Project Tier (Nooca)
+                  </label>
+                  <select
+                    value={projectForm.tier}
+                    onChange={(e) => setProjectForm({ ...projectForm, tier: e.target.value as "free" | "premium" })}
+                    style={{
+                      width: "100%",
+                      padding: "12px",
+                      background: "rgba(10, 15, 30, 0.8)",
+                      border: "1px solid rgba(59, 130, 246, 0.3)",
+                      borderRadius: "10px",
+                      color: "#f8fafc",
+                      fontSize: "0.85rem",
+                      outline: "none",
+                      boxSizing: "border-box",
+                    }}
+                  >
+                    <option value="free" style={{ background: "#0f172a" }}>🟢 Free (Bilaash - Open Source)</option>
+                    <option value="premium" style={{ background: "#0f172a" }}>💎 Premium (Paid / Iib - Store)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: "0.82rem", color: "#cbd5e1", marginBottom: "6px", fontWeight: 600 }}>
+                    Price in USD ($)
+                  </label>
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="e.g. 15"
+                    disabled={projectForm.tier === "free"}
+                    value={projectForm.tier === "free" ? 0 : projectForm.price}
+                    onChange={(e) => setProjectForm({ ...projectForm, price: Number(e.target.value) })}
+                    style={{
+                      width: "100%",
+                      padding: "12px",
+                      background: projectForm.tier === "free" ? "rgba(15, 23, 42, 0.5)" : "rgba(10, 15, 30, 0.8)",
+                      border: "1px solid rgba(59, 130, 246, 0.3)",
+                      borderRadius: "10px",
+                      color: "#f8fafc",
+                      fontSize: "0.85rem",
+                      outline: "none",
+                      boxSizing: "border-box",
+                      opacity: projectForm.tier === "free" ? 0.5 : 1,
                     }}
                   />
                 </div>
